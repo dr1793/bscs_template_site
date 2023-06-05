@@ -1,27 +1,26 @@
-'use client';
 import Image from 'next/image'
 import React from 'react';
 import styles from './page.module.css'
-import client from '../lib/apolloClient'
-import { gql, useQuery } from '@apollo/client'
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import { getRevalidateQuery } from "@/lib/apolloClient";
+import { gql } from '@apollo/client'
+import Banner from '@/components/Banner';
+import Carousel from '@/components/Carousel';
+import About from '@/components/About';
 
-export default function Home() {
+export default async function Home() {
 
   //Use a promise and a timeout to make the backdrop last a second longer
-  const { loading, error, data } = useQuery(query, { client });
-
+  const { data } = await getRevalidateQuery(query);
 
   return (
     <React.Fragment>
       {/* Backdrop should be more opaque and should fade out when done loading */}
-      <Backdrop
+      {/* <Backdrop
         sx={{ color: '#fff', zIndex: 10 }}
-        open={loading}
+        open={false}
       >
         <CircularProgress color="inherit" size={400} />
-      </Backdrop>
+      </Backdrop> */}
 
 
       <main className={styles.main}>
@@ -41,15 +40,17 @@ export default function Home() {
           />
         </div>
         <div className={styles.grid}>
+          <Banner id='home'></Banner>
+          <Carousel id='selected-works'></Carousel>
+          <About id='about'></About>
         </div>
       </main>
     </React.Fragment>
   )
-
 }
 
 const query = gql`
-  query homeCollectionQuery {
+  query pageQuery {
     homeCollection {
       items {
         sys {
