@@ -19,21 +19,17 @@ export default function TopNav({
   );
 
   interface PageLink {
-    name: string;
     href: string;
     path: string;
   }
   type PageLinks = PageLink[];
 
   const links: PageLinks = [
-    { name: "Home", href: "", path: "" },
-    {
-      name: "Selected Work",
-      href: "#selected-work",
-      path: "selected-work",
-    },
-    { name: "About", href: "#about", path: "about" },
-    { name: "Contact", href: "contact-form", path: "contact-form" },
+    { href: "about", path: "about" },
+    { href: "our-team", path: "our-team" },
+    { href: "event-musts", path: "event-musts" },
+    { href: "gallery", path: "gallery" },
+    { href: "contact-us", path: "contact-us" },
   ];
 
   useEffect(() => {
@@ -48,7 +44,7 @@ export default function TopNav({
       <Toolbar disableGutters>
         {links.map((link: PageLink, i: number) => {
           return (
-            <React.Fragment key={i + link.name}>
+            <React.Fragment key={i + contentfulLinks[i]}>
               <Link href={link.href}>
                 {comparePathLocation === link.href && " | "}{" "}
                 {contentfulLinks[i]}
