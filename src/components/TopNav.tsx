@@ -28,28 +28,29 @@ export default function TopNav({
     { href: "our-team", path: "our-team" },
     { href: "event-musts", path: "event-musts" },
     { href: "gallery", path: "gallery" },
-    { href: "contact-us", path: "contact-us" },
+    { href: "contact-form", path: "contact-form" },
   ];
 
   useEffect(() => {
     setComparePathLocation(window.location.hash || pathname.split("/")[1]);
-  }, [params, window.location.hash, pathname]);
+  }, [params, pathname]);
 
   return (
     <React.Fragment>
       <Link href="/">
         <Image src={logo} width={200} height={200} alt="site logo" />
       </Link>
-        {links.map((link: PageLink, i: number) => {
-          return (
-            <React.Fragment key={i + contentfulLinks[i]}>
+      {links.map((link: PageLink, i: number) => {
+        return (
+          <React.Fragment key={i + contentfulLinks[i]}>
+            <button className={`text-2xl transition duration-150 border-b-8 ${comparePathLocation != link.href && 'border-transparent'} hover:border-white`}>
               <Link href={link.href}>
-                {comparePathLocation === link.href && " | "}{" "}
                 {contentfulLinks[i]}
               </Link>
-            </React.Fragment>
-          );
-        })}
+            </button>
+          </React.Fragment>
+        );
+      })}
     </React.Fragment>
   );
 }

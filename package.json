@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"next dev --turbo\" \"tailwindcss --input ./styles/input.css --output ./styles/output.css --watch\"",   
-    "build": "tailwindcss ./styles/input.css --output ./styles/output.css && next build",
+    "dev": "concurrently \"next dev --turbo\" \"tailwindcss --input ./src/styles/input.css --output ./src/styles/output.css --watch\"",
+    "build": "tailwindcss ./src/styles/input.css --output ./src/styles/output.css && next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@apollo/client": "^3.8.0-alpha.15",
     "@apollo/experimental-nextjs-app-support": "^0.1.0",
+    "@headlessui/react": "^1.7.15",
+    "@heroicons/react": "^2.0.18",
+    "@tailwindcss/forms": "^0.5.3",
     "@types/node": "20.2.5",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",

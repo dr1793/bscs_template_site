@@ -7,7 +7,7 @@ import {
   HOME_PAGE_META_DESCRIPTION,
   HOME_PAGE_META_NAME,
 } from "../lib/secrets";
-import "./globals.css";
+import "../styles/globals.css";
 import "../styles/output.css";
 
 export const metadata = {
