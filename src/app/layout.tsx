@@ -1,13 +1,14 @@
-import "./globals.css";
 import { Inter } from "next/font/google";
-import {
-  HOME_PAGE_META_DESCRIPTION,
-  HOME_PAGE_META_NAME,
-} from "../lib/secrets";
 import { getRevalidateQuery } from "@/lib/apolloClient";
 import { gql } from "@apollo/client";
 import TopNav from "@/components/TopNav";
 import Footer from "@/components/Footer";
+import {
+  HOME_PAGE_META_DESCRIPTION,
+  HOME_PAGE_META_NAME,
+} from "../lib/secrets";
+import "./globals.css";
+import "../styles/output.css";
 
 export const metadata = {
   title: HOME_PAGE_META_NAME,

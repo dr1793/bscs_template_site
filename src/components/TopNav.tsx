@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { usePathname, useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { AppBar, Toolbar } from "@mui/material";
 
 export default function TopNav({
   logo,
@@ -37,11 +36,10 @@ export default function TopNav({
   }, [params, window.location.hash, pathname]);
 
   return (
-    <AppBar position="static">
+    <React.Fragment>
       <Link href="/">
         <Image src={logo} width={200} height={200} alt="site logo" />
       </Link>
-      <Toolbar disableGutters>
         {links.map((link: PageLink, i: number) => {
           return (
             <React.Fragment key={i + contentfulLinks[i]}>
@@ -52,7 +50,6 @@ export default function TopNav({
             </React.Fragment>
           );
         })}
-      </Toolbar>
-    </AppBar>
+    </React.Fragment>
   );
 }
