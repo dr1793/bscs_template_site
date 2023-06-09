@@ -42,7 +42,7 @@ export default function TopNav({
     <div className="w-full h-16 absolute">
       <div className="z-40 w-full sticky top-0">
         <div className="absolute flex flex-col w-full backdrop-filter backdrop-blur-sm">
-          <div className="flex flex-row h-20 justify-between p-2">
+          <div className="flex flex-row h-24 justify-between p-2">
             <div>
               <Link href="/">
                 <Image src={logo} width={logoSize} height={logoSize} alt="site logo" />
@@ -53,8 +53,8 @@ export default function TopNav({
                 return (
                   <Link
                     key={i + contentfulLinks[i]}
-                    className={`topnav-link text-2xl flex items-end px-1 mx-1 pb-1
-            relative before:content-[''] before:absolute before:block before:w-full before:h-[4px] 
+                    className={`topnav-link text-xl flex items-end px-1 mx-1 pb-1
+            relative before:content-[''] before:absolute before:block before:w-full before:h-[3px] 
             before:bottom-0 before:left-0 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
             before:transition before:ease-in-out before:duration-300
             ${comparePathLocation === link.href && "before:scale-x-100"} `}

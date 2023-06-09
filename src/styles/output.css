@@ -759,10 +759,6 @@ select {
   margin-top: 0.5rem;
 }
 
-.mt-2\.5 {
-  margin-top: 0.625rem;
-}
-
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -791,8 +787,8 @@ select {
   height: 4rem;
 }
 
-.h-20 {
-  height: 5rem;
+.h-24 {
+  height: 6rem;
 }
 
 .h-5 {
@@ -847,10 +843,6 @@ select {
   align-items: flex-end;
 }
 
-.justify-end {
-  justify-content: flex-end;
-}
-
 .justify-between {
   justify-content: space-between;
 }
@@ -869,8 +861,8 @@ select {
        column-gap: 2rem;
 }
 
-.gap-y-6 {
-  row-gap: 1.5rem;
+.gap-y-4 {
+  row-gap: 1rem;
 }
 
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
@@ -964,6 +956,10 @@ select {
   padding-bottom: 6rem;
 }
 
+.pt-16 {
+  padding-top: 4rem;
+}
+
 .pt-20 {
   padding-top: 5rem;
 }
@@ -972,17 +968,8 @@ select {
   padding-top: 6rem;
 }
 
-.pt-16 {
-  padding-top: 4rem;
-}
-
 .text-center {
   text-align: center;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .text-3xl {
@@ -1003,6 +990,11 @@ select {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -1120,9 +1112,9 @@ select {
   display: block;
 }
 
-.before\:h-\[4px\]::before {
+.before\:h-\[3px\]::before {
   content: var(--tw-content);
-  height: 4px;
+  height: 3px;
 }
 
 .before\:w-full::before {
