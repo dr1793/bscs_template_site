@@ -24,12 +24,12 @@ export default async function RootLayout({
 }) {
   const { data } = await getRevalidateQuery(query);
 
-  const { logo, links } = data?.navigationBarCollection?.items[0]
+  const { logo, links } = data?.navigationBarCollection?.items[0];
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <TopNav logo={logo.url} contentfulLinks={links}/>
+            <TopNav logo={logo.url} contentfulLinks={links} />
         {children}
         <Footer />
       </body>
@@ -38,17 +38,18 @@ export default async function RootLayout({
 }
 
 const query = gql`
-query NavandFooter{
-  navigationBarCollection {
-    items {
-      sys {
-        id
-      }
-      displayField
-      links
-      logo {
-        url
+  query NavandFooter {
+    navigationBarCollection {
+      items {
+        sys {
+          id
+        }
+        displayField
+        links
+        logo {
+          url
+        }
       }
     }
   }
-}`;
+`;
