@@ -2,13 +2,17 @@
 import React, { useState } from "react";
 import SectionContainer from "./SectionContainer";
 import Input from "./utilities/Input";
-import { MAILING_LIST_EMAIL } from "../lib/constants";
+import {
+  MAILING_API_URL,
+  MAILING_LIST_EMAIL,
+} from "../lib/constants";
 import {
   FieldValues,
   FormProvider,
   SubmitHandler,
   useForm,
 } from "react-hook-form";
+import axios from "axios";
 
 export default function MailingListCTABanner() {
   const methods = useForm({ mode: "onBlur" });
@@ -16,29 +20,36 @@ export default function MailingListCTABanner() {
   const [serverError, setServerError] = useState<boolean>(false);
   const [successSubmit, setSuccessSubmit] = useState<boolean>(false);
 
-  const {
-    handleSubmit,
-    reset,
-  } = methods;
+  const { handleSubmit, reset } = methods;
 
   const onSubmit: SubmitHandler<FieldValues> = async (values: FieldValues) => {
     const email = values?.email;
     if (!email) return;
-    setServerError(false)
 
-    setLoading(true)
-    console.log(email)
+    setServerError(false);
+    setLoading(true);
+
+    console.log(email);
     try {
-      //Send the email to the service 
-      setSuccessSubmit(true)
-      reset()
-    } catch (err) {
-      console.log(err)
-      setServerError(true)
+      //Send the email to the service
+      const response = await axios.post(MAILING_API_URL, { Email: email });
+      console.log(response)
+      setSuccessSubmit(true);
+      reset();
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error(error.message);
+        if (error.response) {
+          console.error(`Status: ${error.response.status}`);
+          console.error(`Data: ${error.response.data}`);
+        }
+        return;
+      }
 
+      console.log(error);
+      setServerError(true);
     }
-    setLoading(false)
-
+    setLoading(false);
   };
 
   return (
