@@ -9,6 +9,7 @@ import {
 } from "../lib/secrets";
 import "../styles/globals.css";
 import "../styles/output.css";
+import LogoIcon from "@/components/utilities/LogoIcon/LogoIcon";
 
 export const metadata = {
   title: HOME_PAGE_META_NAME,
@@ -29,7 +30,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-            <TopNav logo={logo.url} contentfulLinks={links} />
+            <TopNav contentfulLinks={links}>
+                {/* @ts-expect-error Server Component */}
+                <LogoIcon rotation color={"#492914"} size={110}/>
+              </TopNav>
         {children}
         <Footer />
       </body>

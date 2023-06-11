@@ -5,11 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function TopNav({
-  logo,
   contentfulLinks,
+  children
 }: {
-  logo: string;
   contentfulLinks: string[];
+  children: React.ReactNode
 }) {
   const pathname = usePathname();
   const params = useParams();
@@ -45,7 +45,7 @@ export default function TopNav({
           <div className="flex flex-row h-24 justify-between p-2">
             <div>
               <Link href="/">
-                <Image src={logo} width={logoSize} height={logoSize} alt="site logo" />
+                {children}
               </Link>
             </div>
             <div className="hidden sm:flex flex-row">

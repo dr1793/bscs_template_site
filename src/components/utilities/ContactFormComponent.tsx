@@ -106,7 +106,7 @@ const ContactFormComponent = () => {
                 !serverError && "hidden"
               } text-red-700 px-4 mb-2 relative`}
             >
-              We're having trouble communicating with our servers. Try again
+              We&apos;re having trouble communicating with our servers. Try again
               later!
             </div>
             <button
