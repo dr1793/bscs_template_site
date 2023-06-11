@@ -14,18 +14,21 @@ import {
   CONTACT_FORM_VALUES,
   MESSAGE_API_URL,
 } from "@/lib/constants";
+import LoadingSpinner from "./LoadingSpinner";
 
 const ContactFormComponent = () => {
-  const methods = useForm();
+  const methods = useForm({ mode: "onBlur" });
   const {
     handleSubmit,
-    formState: { errors },
+    formState: { isValid, errors },
     reset,
-    setValue
+    setValue,
   } = methods;
 
   const [captchaValue, setCaptchaValue] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [serverError, setServerError] = useState<boolean>(false);
+  const [successSubmit, setSuccessSubmit] = useState<boolean>(false);
 
   const onCaptchaChange = (token: string | null): void => {
     if (!token) return;
@@ -33,6 +36,7 @@ const ContactFormComponent = () => {
   };
 
   const onSubmit: SubmitHandler<FieldValues> = async (values: FieldValues) => {
+    setServerError(false);
     const data = {
       "Google Token": captchaValue,
       "Message Data": {
@@ -51,16 +55,22 @@ const ContactFormComponent = () => {
     try {
       const response = await axios.post(MESSAGE_API_URL, data);
       if (response.status === 201) {
-        reset()
+        setSuccessSubmit(true);
+        reset();
         setLoading(false);
         return;
       }
     } catch (err) {
       console.log(err);
+      setServerError(true);
+      setLoading(false);
     }
 
     return;
   };
+
+  const submitButtonStyles =
+    "w-40 mt-1 rounded-md  px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600";
 
   return (
     <form
@@ -72,29 +82,47 @@ const ContactFormComponent = () => {
       <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
         <div className="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
           <FormProvider {...methods}>
-            {CONTACT_FORM_VALUES.map((value) => {
+            {CONTACT_FORM_VALUES.map((value, i) => {
               return (
-                <React.Fragment>
+                <div
+                  className={value?.twoCols ? "" : `sm:col-span-2`}
+                  key={`${i}-${value.label}`}
+                >
                   <Input {...value} />
-                  {errors[value.tagLabel] && (
-                    <span>{String(errors[value.tagLabel]?.message)}</span>
-                  )}
-                </React.Fragment>
+                </div>
               );
             })}
           </FormProvider>
         </div>
         <div className="mt-8 flex justify-around">
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col items-center justify-between">
             <ReCAPTCHA
+              className={`${!isValid && "hidden"} mb-6`}
               sitekey="6LfcJh4aAAAAAM1sI9Z2jj2WXgjtHbLRGzWMCdzQ"
               onChange={onCaptchaChange}
             />
+            <div
+              className={`${
+                !serverError && "hidden"
+              } text-red-700 px-4 mb-2 relative`}
+            >
+              We're having trouble communicating with our servers. Try again
+              later!
+            </div>
             <button
               type="submit"
-              className="mt-6 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className={`bg-indigo-600 ${submitButtonStyles} 
+              ${serverError && " pointer-events-none bg-gray-500"}
+              ${loading && " pointer-events-none"} 
+              ${successSubmit && "bg-green-500 pointer-events-none "}
+              `}
             >
-              Send message
+              {loading
+                ? // <LoadingSpinner size={35} />
+                  "loading"
+                : successSubmit
+                ? "Got your message!"
+                : " Send message "}
             </button>
           </div>
         </div>

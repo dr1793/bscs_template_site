@@ -5,6 +5,9 @@ import {
 } from "@heroicons/react/24/outline";
 import PageTopSectionContainer from "@/components/PageTopSectionContainer";
 import ContactFormComponent from "@/components/utilities/ContactFormComponent";
+import LoadingSpinner from "@/components/utilities/LoadingSpinner";
+import SectionContainer from "@/components/SectionContainer";
+import MailingListCTABanner from "@/components/MailingListCTABanner";
 
 export default function ContactForm() {
 
@@ -86,6 +89,7 @@ export default function ContactForm() {
             </div>
           </dl>
         </PageTopSectionContainer>
+        <MailingListCTABanner/>
         <ContactFormComponent/>
       </div>
     </div>

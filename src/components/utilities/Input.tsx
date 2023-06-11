@@ -1,22 +1,11 @@
 import React, { useState } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 import { PatternFormat } from "react-number-format";
+import { ContactFormValue } from "@/lib/constants";
 
-interface InputProps {
-  label: string;
-  tagLabel: string;
-  type: string;
-  autoComplete: string;
-  required: boolean;
-  formatter?: string;
-  twoCols?: boolean;
-  textArea?: boolean;
+interface InputProps extends ContactFormValue {
   labelClasses?: string;
   inputClasses?: string;
-  validationPattern: {
-    value: RegExp;
-    message: string;
-  };
 }
 
 export default function Input({
@@ -25,21 +14,20 @@ export default function Input({
   type,
   autoComplete,
   required = false,
-  twoCols = false,
   textArea = false,
   formatter = "",
   labelClasses,
   inputClasses,
   validationPattern,
 }: InputProps) {
-  const { register, control } = useFormContext();
+  const { register, control, formState: { errors }} = useFormContext();
 
   const [value, setValue] = useState<string>("");
 
   const inputStyles = `block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${inputClasses}`;
 
   return (
-    <div className={twoCols ? "" : `sm:col-span-2`}>
+    <React.Fragment>
       <label
         htmlFor={tagLabel}
         className={`block text-sm font-semibold leading-6 text-gray-900 ${labelClasses}`}
@@ -62,7 +50,7 @@ export default function Input({
         ) : formatter ? (
           <Controller
             defaultValue={""}
-            render={({ field: { onChange, name, onBlur, value} }) => (
+            render={({ field: { onChange, name, onBlur, value } }) => (
               <PatternFormat
                 onChange={onChange}
                 format={formatter}
@@ -92,6 +80,11 @@ export default function Input({
           />
         )}
       </div>
-    </div>
+      {errors[tagLabel] && (
+        <div className="text-red-700">
+          {String(errors[tagLabel]?.message)}
+        </div>
+      )}
+    </React.Fragment>
   );
 }
