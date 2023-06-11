@@ -19,6 +19,7 @@
     "@types/react-dom": "18.2.4",
     "axios": "^1.4.0",
     "eslint": "8.41.0",
+    "framer-motion": "^10.12.16",
     "graphql": "^16.6.0",
     "jsdom": "^22.1.0",
     "lottie-react": "^2.4.0",

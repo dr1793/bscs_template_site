@@ -20,6 +20,7 @@
 *.code-workspace
 *.pem
 secrets.tsx
+constants.tsx
 
 # debug
 npm-debug.log*
