@@ -15,7 +15,6 @@ export default function ContactForm() {
 
 
   return (
-    <div className="relative isolate bg-white">
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
         <PageTopSectionContainer>
           <div className="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-100 ring-1 ring-gray-900/10 lg:w-1/2">
@@ -92,6 +91,5 @@ export default function ContactForm() {
         <MailingListCTABanner/>
         <ContactFormComponent/>
       </div>
-    </div>
   );
 }

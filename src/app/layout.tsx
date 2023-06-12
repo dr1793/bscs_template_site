@@ -30,11 +30,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-            <TopNav contentfulLinks={links}>
-                {/* @ts-expect-error Server Component */}
-                <LogoIcon rotation color={"#492914"} size={110}/>
-              </TopNav>
-        {children}
+        <TopNav contentfulLinks={links}>
+          {/* @ts-expect-error Server Component */}
+          <LogoIcon rotation color={"#492914"} size={110} />
+        </TopNav>
+        <div className="relative isolate bg-white">{children}</div>
         <Footer />
       </body>
     </html>
