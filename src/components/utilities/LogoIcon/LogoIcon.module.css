@@ -7,7 +7,7 @@
   }
 }
 
-svg:hover {
+svg:hover .outer {
   transform: scale(1.05);
   transition: transform 0.7s ease-in-out;
 }
@@ -16,8 +16,3 @@ svg:hover {
   animation: rotate 15s linear infinite;
   transform-origin: 44% 46%;
 }
-
-/* svg:hover .outer {
-  animation: rotate 6s linear infinite;
-  transform-origin: 45% 45%;
-} */

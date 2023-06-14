@@ -1,5 +1,4 @@
 import React, { FC, ReactNode } from "react";
-import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 
 interface PageTopSectionContainerProps {
   children?: ReactNode;

@@ -10,11 +10,17 @@ import {
 import "../styles/globals.css";
 import "../styles/output.css";
 import LogoIcon from "@/components/utilities/LogoIcon/LogoIcon";
+import { useStore } from "@/state/store";
 
 export const metadata = {
   title: HOME_PAGE_META_NAME,
   description: HOME_PAGE_META_DESCRIPTION,
 };
+
+export interface PageLink {
+  href: string;
+  name: string;
+}
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,12 +31,23 @@ export default async function RootLayout({
 }) {
   const { data } = await getRevalidateQuery(query);
 
-  const { logo, links } = data?.navigationBarCollection?.items[0];
+  const { links: linksWithKeys } = data?.navigationBarCollection?.items[0] as {
+    links: string[];
+  };
+
+  const cleanLinksWithKeys: PageLink[] = linksWithKeys.map(
+    (linkWithKey: string): PageLink => {
+      var [linkText, key]: string[] = linkWithKey.split("(", 2);
+      return { name: linkText.trim(), href: key.replace(")", "") };
+    }
+  );
+
+  useStore.setState({ pageInfo: cleanLinksWithKeys });
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <TopNav contentfulLinks={links}>
+        <TopNav contentfulPageLinks={cleanLinksWithKeys}>
           {/* @ts-expect-error Server Component */}
           <LogoIcon rotation color={"#492914"} size={110} />
         </TopNav>
@@ -45,9 +62,6 @@ const query = gql`
   query NavandFooter {
     navigationBarCollection {
       items {
-        sys {
-          id
-        }
         displayField
         links
         logo {

@@ -1,13 +1,14 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { useStore } from "@/state/store";
 
 export default function PageWrapper({
   children,
-  animationDirection,
+  pageNo,
 }: {
   children: React.ReactNode;
-  animationDirection: "left" | "right" | "fade";
+  pageNo: number;
 }) {
   type Motion = {
     initial: { x?: string; opacity?: number; y?: number };
@@ -37,8 +38,23 @@ export default function PageWrapper({
     },
   };
 
-  const activeMotion: Motion = motionMapping[animationDirection];
+  const getAnimationDirection = (
+    previous: number | null
+  ): "left" | "right" | "fade" => {
+    if (previous == null) {
+      return "fade";
+    }
 
+    if (pageNo >= previous) {
+      return "right";
+    }
+    return "left";
+  };
+
+  const previousPageNo = useStore((state) => state.currentPageNo);
+  const activeMotion: Motion =
+    motionMapping[getAnimationDirection(previousPageNo)];
+  
   return (
     <motion.div
       initial={activeMotion.initial}
