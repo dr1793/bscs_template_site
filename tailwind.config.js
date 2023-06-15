@@ -6,7 +6,15 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        groovys: ['var(--font-groovy-script)'],
+        groovyf: ['var(--font-groovy-fruity)'],
+        guny: ['var(--font-gunydrops)'],
+        naskle: ['var(--font-naskle)'],
+        nectarine: ['var(--font-nect)']
+      }
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),

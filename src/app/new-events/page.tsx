@@ -11,7 +11,7 @@ export default function EventMusts() {
     <PageWrapper pageNo={pageList.findIndex((page) => page.href == "new-events")}>
       <div className="h-screen w-full">
         <PageTopSectionContainer>Upcoming Events</PageTopSectionContainer>
-        <Link href="/event-musts/events"> Events </Link>
+        <Link href="new-events/events"> Events </Link>
       </div>
     </PageWrapper>
   );

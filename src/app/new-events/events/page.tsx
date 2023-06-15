@@ -6,7 +6,7 @@ export default function EventsPage() {
   return (
     <React.Fragment>
       <PageTopSectionContainer>EventsPage</PageTopSectionContainer>
-      <Link href="/event-musts"> {"<"} </Link>
+      <Link href="/new-events"> {"<"} </Link>
     </React.Fragment>
   );
 }

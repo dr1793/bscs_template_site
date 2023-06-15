@@ -1030,6 +1030,10 @@ select {
   text-align: center;
 }
 
+.font-nectarine {
+  font-family: var(--font-nect);
+}
+
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;

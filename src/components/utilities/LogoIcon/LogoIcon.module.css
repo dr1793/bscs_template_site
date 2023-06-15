@@ -13,6 +13,6 @@ svg:hover .outer {
 }
 
 .outer{
-  animation: rotate 15s linear infinite;
+  animation: rotate 30s linear infinite;
   transform-origin: 44% 46%;
 }
