@@ -23,13 +23,14 @@ const { getClient } = registerApolloClient(() => {
     });
 });
 
-export const getRevalidateQuery = async (query) => {
+export const getRevalidateQuery = async (query, variables = {}) => {
     return await getClient().query({
         query,
         context: {
-            fetchOptions: {
-                next: { revalidate: 5},
-            },
+        ...variables,
+        fetchOptions: {
+            next: { revalidate: 5 },
         },
+    },
     });
 };

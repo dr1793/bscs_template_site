@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  EnvelopeIcon,
-  PhoneIcon,
-} from "@heroicons/react/24/outline";
+import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import PageTopSectionContainer from "@/components/PageTopSectionContainer";
 import ContactFormComponent from "@/components/utilities/ContactFormComponent";
 import MailingListCTABanner from "@/components/MailingListCTABanner";
@@ -12,9 +9,10 @@ import { useStore } from "@/state/store";
 export default function ContactForm() {
   const pageList = useStore.getState().pageInfo;
 
-
   return (
-    <PageWrapper pageNo={pageList.findIndex((page) => page.href == "contact-us")}>
+    <PageWrapper
+      pageNo={pageList.findIndex((page) => page.href == "contact-us")}
+    >
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
         <PageTopSectionContainer>
           <div className="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-100 ring-1 ring-gray-900/10 lg:w-1/2">
@@ -88,9 +86,10 @@ export default function ContactForm() {
             </div>
           </dl>
         </PageTopSectionContainer>
-        <MailingListCTABanner/>
-        <ContactFormComponent/>
+        <MailingListCTABanner className="lg:hidden"/>
+        <ContactFormComponent />
       </div>
+      <MailingListCTABanner className="hidden lg:flex " />
     </PageWrapper>
   );
 }

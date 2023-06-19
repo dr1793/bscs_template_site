@@ -8,7 +8,7 @@ export default function OurTeam() {
 
   return (
     <PageWrapper pageNo={pageList.findIndex((page) => page.href == "our-team")}>
-      <div className="h-screen w-full">
+      <div className=" w-full">
         <PageTopSectionContainer>Our Team!</PageTopSectionContainer>
       </div>
     </PageWrapper>

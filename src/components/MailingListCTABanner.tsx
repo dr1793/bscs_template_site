@@ -2,10 +2,7 @@
 import React, { useState } from "react";
 import SectionContainer from "./SectionContainer";
 import Input from "./utilities/Input";
-import {
-  MAILING_API_URL,
-  MAILING_LIST_EMAIL,
-} from "../lib/constants";
+import { MAILING_API_URL, MAILING_LIST_EMAIL } from "../lib/constants";
 import {
   FieldValues,
   FormProvider,
@@ -14,7 +11,11 @@ import {
 } from "react-hook-form";
 import axios from "axios";
 
-export default function MailingListCTABanner() {
+export default function MailingListCTABanner({
+  className,
+}: {
+  className: string;
+}) {
   const methods = useForm({ mode: "onBlur" });
   const [loading, setLoading] = useState<boolean>(false);
   const [serverError, setServerError] = useState<boolean>(false);
@@ -29,11 +30,9 @@ export default function MailingListCTABanner() {
     setServerError(false);
     setLoading(true);
 
-    console.log(email);
     try {
       //Send the email to the service
       const response = await axios.post(MAILING_API_URL, { Email: email });
-      console.log(response)
       setSuccessSubmit(true);
       reset();
     } catch (error) {
@@ -53,29 +52,31 @@ export default function MailingListCTABanner() {
   };
 
   return (
-    <SectionContainer pageColor="bg-amber-800">
-      {" "}
-      <form
-        action="#"
-        method="POST"
-        className=""
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className="flex flex-row justify-between align-center">
-          <div className="flex items-center justify-center">
-            Join our mailing list!
-          </div>
-          <FormProvider {...methods}>
-            <div className="flex flex-col">
-              <Input {...MAILING_LIST_EMAIL} />
+    <div className={`${className}`}>
+      <SectionContainer pageColor="bg-amber-800">
+        {" "}
+        <form
+          action="#"
+          method="POST"
+          className=""
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className="flex flex-row justify-between align-center ">
+            <div className="flex items-center justify-center w-full">
+              Join our mailing list!
             </div>
-          </FormProvider>
-          <button type="submit" className="hover:text-white">
-            {" "}
-            Join{" "}
-          </button>
-        </div>
-      </form>
-    </SectionContainer>
+            <FormProvider {...methods}>
+              <div className="flex flex-col">
+                <Input {...MAILING_LIST_EMAIL} />
+              </div>
+            </FormProvider>
+            <button type="submit" className="hover:text-white">
+              {" "}
+              Join{" "}
+            </button>
+          </div>
+        </form>
+      </SectionContainer>
+    </div>
   );
 }

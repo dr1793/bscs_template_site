@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"next dev --turbo\" \"tailwindcss --input ./src/styles/input.css --output ./src/styles/output.css --watch\"",
-    "build": "tailwindcss ./src/styles/input.css --output ./src/styles/output.css && next build",
+    "dev": "concurrently \"next dev\" \"tailwindcss --input ./src/global_styles/input.css --output ./src/global_styles/output.css --watch\"",
+    "tdev": "concurrently \"next dev --turbo\" \"tailwindcss --input ./src/global_styles/input.css --output ./src/global_styles/output.css --watch\"",
+    "build": "tailwindcss ./src/global_styles/input.css --output ./src/global_styles/output.css && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -18,6 +19,7 @@
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
     "axios": "^1.4.0",
+    "date-fns": "^2.30.0",
     "eslint": "8.41.0",
     "framer-motion": "^10.12.16",
     "graphql": "^16.6.0",
@@ -36,6 +38,7 @@
     "@types/react-google-recaptcha": "^2.1.5",
     "autoprefixer": "^10.4.14",
     "concurrently": "^8.1.0",
+    "daisyui": "^3.1.1",
     "eslint-config-next": "^13.4.5",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2"

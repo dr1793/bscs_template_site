@@ -60,7 +60,7 @@ export default function TopNav({
             before:bottom-0 before:left-0 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
             before:transition before:ease-in-out before:duration-300
             ${comparePathLocation === link.href && "before:scale-x-100"} `}
-                    href={link.href}
+                    href={"/" + link.href}
                   >
                     {link.name}
                   </Link>

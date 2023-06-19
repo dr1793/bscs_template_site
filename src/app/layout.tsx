@@ -43,14 +43,14 @@ export default async function RootLayout({
 
 
   return (
-    <html lang="en" className={`${fontVariables}`}>
-      <body className="">
+    <html lang="en" data-theme="retro">
+      <body className={`${fontVariables} flex flex-col min-h-screen justify-between`}>
         <TopNav contentfulPageLinks={cleanLinksWithKeys}>
           {/* @ts-expect-error Server Component */}
           <LogoIcon rotation color={"#492914"} size={110} />
         </TopNav>
-        <div className="relative isolate bg-white">{children}</div>
-        <Footer />
+        <div className="bg-white">{children}</div>
+        <Footer classNames={``}/>
       </body>
     </html>
   );

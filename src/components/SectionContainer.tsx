@@ -12,9 +12,9 @@ const SectionContainer: FC<SectionContainerProps> = ({
 }) => {
   return (
     <div
-      className={`relative px-8 py-8 lg:static ${pageColor}`}
+      className={`px-8 py-8 ${pageColor} w-full`}
     >
-      <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+      <div className="mx-auto w-full lg:mx-0 ">
         {children}
       </div>
     </div>

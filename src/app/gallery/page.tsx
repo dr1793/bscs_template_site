@@ -10,7 +10,7 @@ export default function Gallery() {
     <PageWrapper
       pageNo={pageList.findIndex((page) => page.href == "gallery")}
     >
-      <div className="h-screen w-full">
+      <div className=" w-full">
         <PageTopSectionContainer>Gallery</PageTopSectionContainer>
       </div>
     </PageWrapper>
