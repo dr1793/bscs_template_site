@@ -31,7 +31,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   // Constructing the link list on the Top Nav from Contentful
   const { data } = await getRevalidateQuery(query);
   const { links: linksWithKeys } = data?.navigationBarCollection?.items[0] as {
@@ -45,28 +44,38 @@ export default async function RootLayout({
   );
   useStore.setState({ pageInfo: cleanLinksWithKeys });
 
-  const iconLinks: IconLink[] = data?.navigationBarCollection?.items[0].iconListCollection?.items.map(
-    (item: {
-      link: string;
-      icon: {
-        url: string;
-      };
-    }): IconLink => {
-      return {link: item.link, icon: item.icon.url}
-    }
-  );
+  const iconLinks: IconLink[] =
+    data?.navigationBarCollection?.items[0].iconListCollection?.items.map(
+      (item: {
+        link: string;
+        icon: {
+          url: string;
+        };
+      }): IconLink => {
+        return { link: item.link, icon: item.icon.url };
+      }
+    );
 
-  console.log(iconLinks)
+  const footerText: string = data?.footerCollection?.items[0].text;
+  const footerButtonText: string =
+    data?.footerCollection?.items[0].footerContactButtonText;
+
+  console.log(footerButtonText)
 
   return (
     <html lang="en" data-theme="retro">
-      <body className={`${fontVariables} flex flex-col min-h-screen justify-between`}>
-        <TopNav contentfulPageLinks={cleanLinksWithKeys} contentfulIconLinks={iconLinks}>
+      <body
+        className={`${fontVariables} flex flex-col min-h-screen justify-between`}
+      >
+        <TopNav
+          contentfulPageLinks={cleanLinksWithKeys}
+          contentfulIconLinks={iconLinks}
+        >
           {/* @ts-expect-error Server Component */}
           <LogoIcon rotation color={"white"} size={110} />
         </TopNav>
         <div className="bg-white">{children}</div>
-        <Footer classNames={``}/>
+        <Footer classNames={``} text={footerText} buttonText={footerButtonText} icons={iconLinks}/>
       </body>
     </html>
   );
@@ -81,9 +90,9 @@ const query = gql`
         logo {
           url
         }
-        iconListCollection(limit:10) {
+        iconListCollection(limit: 10) {
           items {
-            ... on NavBarIconList { 
+            ... on NavBarIconList {
               link
               icon {
                 url
@@ -91,6 +100,12 @@ const query = gql`
             }
           }
         }
+      }
+    }
+    footerCollection(limit: 1) {
+      items {
+        text
+        footerContactButtonText
       }
     }
   }

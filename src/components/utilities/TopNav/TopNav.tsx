@@ -11,6 +11,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { PageLink, IconLink } from "@/app/layout";
 import "./styles.css";
 import { text } from "stream/consumers";
+import IconLinks from "../IconLinks/IconLinks";
 
 export default function TopNav({
   contentfulPageLinks,
@@ -66,12 +67,6 @@ export default function TopNav({
     );
   });
 
-  const iconLinks = contentfulIconLinks.map((link: IconLink, i: number) => (
-    <Link href={link.link} key={i} className={`flex items-end m-2`}>
-      <Image src={link.icon} width={25} height={25} alt="" />
-    </Link>
-  ));
-
   return (
     <div className="w-full h-16 absolute">
       <StoreInitializer
@@ -95,7 +90,7 @@ export default function TopNav({
                 {textLinks}
               </div>
               {/* Social Media Links */}
-              <div className="flex flex-row">{iconLinks}</div>
+              <div className="flex flex-row"><IconLinks IconLinks={contentfulIconLinks}/></div>
             </div>
             {/* Mobile Nav Menu */}
             <div className="block sm:hidden flex items-center justify-center">
@@ -145,7 +140,7 @@ export default function TopNav({
                         </Link>
                         {textLinks}
                       </div>
-                      <div className="flex flex-row mt-5">{iconLinks}</div>
+                      <div className="flex flex-row mt-5"><IconLinks IconLinks={contentfulIconLinks}/></div>
                     </div>
                   </div>
                 </Dialog.Panel>
