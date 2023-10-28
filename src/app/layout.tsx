@@ -1,6 +1,6 @@
 import { getRevalidateQuery } from "@/lib/apolloClient";
 import { gql } from "@apollo/client";
-import TopNav from "@/components/TopNav";
+import TopNav from "@/components/utilities/TopNav/TopNav";
 import Footer from "@/components/Footer";
 import {
   HOME_PAGE_META_DESCRIPTION,
@@ -20,6 +20,10 @@ export const metadata = {
 export interface PageLink {
   href: string;
   name: string;
+}
+export interface IconLink {
+  link: string;
+  icon: string;
 }
 
 export default async function RootLayout({
@@ -41,13 +45,25 @@ export default async function RootLayout({
   );
   useStore.setState({ pageInfo: cleanLinksWithKeys });
 
+  const iconLinks: IconLink[] = data?.navigationBarCollection?.items[0].iconListCollection?.items.map(
+    (item: {
+      link: string;
+      icon: {
+        url: string;
+      };
+    }): IconLink => {
+      return {link: item.link, icon: item.icon.url}
+    }
+  );
+
+  console.log(iconLinks)
 
   return (
     <html lang="en" data-theme="retro">
       <body className={`${fontVariables} flex flex-col min-h-screen justify-between`}>
-        <TopNav contentfulPageLinks={cleanLinksWithKeys}>
+        <TopNav contentfulPageLinks={cleanLinksWithKeys} contentfulIconLinks={iconLinks}>
           {/* @ts-expect-error Server Component */}
-          <LogoIcon rotation color={"#492914"} size={110} />
+          <LogoIcon rotation color={"white"} size={110} />
         </TopNav>
         <div className="bg-white">{children}</div>
         <Footer classNames={``}/>
@@ -64,6 +80,16 @@ const query = gql`
         links
         logo {
           url
+        }
+        iconListCollection(limit:10) {
+          items {
+            ... on NavBarIconList { 
+              link
+              icon {
+                url
+              }
+            }
+          }
         }
       }
     }

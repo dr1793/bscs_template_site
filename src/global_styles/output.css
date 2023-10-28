@@ -867,68 +867,12 @@ html {
     color: hsl(var(--pf) / var(--tw-text-opacity));
   }
 
-  .link-secondary:hover {
-    --tw-text-opacity: 1;
-    color: hsl(var(--sf) / var(--tw-text-opacity));
-  }
-
   :where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):where(.active), :where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):where(.active) {
     --tw-bg-opacity: 1;
     background-color: hsl(var(--n) / var(--tw-bg-opacity));
     --tw-text-opacity: 1;
     color: hsl(var(--nc) / var(--tw-text-opacity));
   }
-}
-
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  border-radius: var(--rounded-box, 1rem);
-}
-
-.card:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
-.card figure {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card.image-full {
-  display: grid;
-}
-
-.card.image-full:before {
-  position: relative;
-  content: "";
-  z-index: 10;
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--n) / var(--tw-bg-opacity));
-  opacity: 0.75;
-  border-radius: var(--rounded-box, 1rem);
-}
-
-.card.image-full:before,
-    .card.image-full > * {
-  grid-column-start: 1;
-  grid-row-start: 1;
-}
-
-.card.image-full > figure img {
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.card.image-full > .card-body {
-  position: relative;
-  z-index: 20;
-  --tw-text-opacity: 1;
-  color: hsl(var(--nc) / var(--tw-text-opacity));
 }
 
 @media (hover: hover) {
@@ -991,6 +935,19 @@ html {
   padding-right: 0.25rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.hero {
+  display: grid;
+  width: 100%;
+  place-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero > * {
+  grid-column-start: 1;
+  grid-row-start: 1;
 }
 
 .input {
@@ -1125,44 +1082,6 @@ html {
   }
 }
 
-.card :where(figure:first-child) {
-  overflow: hidden;
-  border-start-start-radius: inherit;
-  border-start-end-radius: inherit;
-  border-end-start-radius: unset;
-  border-end-end-radius: unset;
-}
-
-.card :where(figure:last-child) {
-  overflow: hidden;
-  border-start-start-radius: unset;
-  border-start-end-radius: unset;
-  border-end-start-radius: inherit;
-  border-end-end-radius: inherit;
-}
-
-.card:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
-}
-
-.card.bordered {
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--b2) / var(--tw-border-opacity));
-}
-
-.card.compact .card-body {
-  padding: 1rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
-.card.image-full :where(figure) {
-  overflow: hidden;
-  border-radius: inherit;
-}
-
 @keyframes checkmark {
   0% {
     background-position-y: 5px;
@@ -1214,11 +1133,6 @@ html {
 .link-primary {
   --tw-text-opacity: 1;
   color: hsl(var(--p) / var(--tw-text-opacity));
-}
-
-.link-secondary {
-  --tw-text-opacity: 1;
-  color: hsl(var(--s) / var(--tw-text-opacity));
 }
 
 .link:focus {
@@ -1412,10 +1326,6 @@ html {
   z-index: -10;
 }
 
-.z-10 {
-  z-index: 10;
-}
-
 .z-40 {
   z-index: 40;
 }
@@ -1442,6 +1352,10 @@ html {
 
 .col-start-7 {
   grid-column-start: 7;
+}
+
+.m-2 {
+  margin: 0.5rem;
 }
 
 .mx-1 {
@@ -1493,6 +1407,10 @@ html {
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
 .block {
@@ -1696,6 +1614,16 @@ html {
   background-color: rgb(146 64 14 / var(--tw-bg-opacity));
 }
 
+.bg-base-200 {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b2) / var(--tw-bg-opacity));
+}
+
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
@@ -1731,13 +1659,24 @@ html {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-base-200 {
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--b2) / var(--tw-bg-opacity));
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-center {
+  background-position: center;
+}
+
+.bg-no-repeat {
+  background-repeat: no-repeat;
 }
 
 .fill-gray-50 {
   fill: #f9fafb;
+}
+
+.fill-current {
+  fill: currentColor;
 }
 
 .stroke-gray-200 {
@@ -1756,10 +1695,6 @@ html {
   padding: 0.5rem;
 }
 
-.p-10 {
-  padding: 2.5rem;
-}
-
 .p-4 {
   padding: 1rem;
 }
@@ -1767,6 +1702,11 @@ html {
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+}
+
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .px-3 {
@@ -1804,6 +1744,11 @@ html {
   padding-bottom: 0.375rem;
 }
 
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -1824,16 +1769,6 @@ html {
   padding-bottom: 2rem;
 }
 
-.px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
-
-.py-10 {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
-}
-
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -1844,6 +1779,10 @@ html {
 
 .pb-24 {
   padding-bottom: 6rem;
+}
+
+.pb-8 {
+  padding-bottom: 2rem;
 }
 
 .pt-16 {
@@ -1858,16 +1797,16 @@ html {
   padding-top: 6rem;
 }
 
-.pb-10 {
-  padding-bottom: 2.5rem;
+.pr-1 {
+  padding-right: 0.25rem;
 }
 
 .text-center {
   text-align: center;
 }
 
-.font-nectarine {
-  font-family: var(--font-nect);
+.font-grotesk {
+  font-family: var(--font-grotesk);
 }
 
 .text-3xl {
@@ -1924,6 +1863,16 @@ html {
   letter-spacing: -0.025em;
 }
 
+.text-base-content {
+  --tw-text-opacity: 1;
+  color: hsl(var(--bc) / var(--tw-text-opacity));
+}
+
+.text-bscs-yellow {
+  --tw-text-opacity: 1;
+  color: rgb(222 204 109 / var(--tw-text-opacity));
+}
+
 .text-gray-400 {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
@@ -1954,9 +1903,12 @@ html {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.text-base-content {
-  --tw-text-opacity: 1;
-  color: hsl(var(--bc) / var(--tw-text-opacity));
+.text-\[\#yourcolor\] {
+  color: #yourcolor;
+}
+
+.opacity-25 {
+  opacity: 0.25;
 }
 
 .shadow {
@@ -2200,14 +2152,20 @@ html {
     line-height: 1.25rem;
   }
 
+  .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
   .sm\:leading-6 {
     line-height: 1.5rem;
   }
 }
 
 @media (min-width: 768px) {
-  .md\:block {
-    display: block;
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 

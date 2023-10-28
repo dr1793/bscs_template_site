@@ -36,6 +36,11 @@ const _nectarine = localFont({
   variable: "--font-nect",
 });
 
+const _anzeigen_grotesk_d = localFont({
+  src: "./_fonts/AnzeigenGroteskD.ttf",
+  variable: "--font-grotesk",
+});
+
 // 2
 const fonts: Fonts = {
   GroovyScript: _groovy_script,
@@ -43,6 +48,7 @@ const fonts: Fonts = {
   GunyDrops: _gunydrops,
   Naskle: _naskle,
   Nectarine: _nectarine,
+  AnzeigenGrotesk: _anzeigen_grotesk_d
 };
 
 const fontVariables = Object.values(fonts).reduce(

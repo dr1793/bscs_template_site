@@ -3,15 +3,19 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import { usePathname, useParams } from "next/navigation";
 import { useStore } from "@/state/store";
 import Link from "next/link";
-import StoreInitializer from "./StoreInitializer";
+import Image from "next/image"
+import StoreInitializer from "../../StoreInitializer";
 import { getJSDocReturnTag } from "typescript";
-import { PageLink } from "@/app/layout";
+import { PageLink, IconLink } from "@/app/layout";
+import './styles.css'; 
 
 export default function TopNav({
   contentfulPageLinks,
+  contentfulIconLinks,
   children,
 }: {
   contentfulPageLinks: PageLink[],
+  contentfulIconLinks: IconLink[],
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
@@ -45,21 +49,23 @@ export default function TopNav({
         currentPageNo={findLinkPageIndex("href", pathname.split("/")[1])}
       />
       <div className="z-40 w-full sticky top-0">
-        <div className="absolute flex flex-col w-full backdrop-filter backdrop-blur-sm">
+        <div className="absolute flex flex-col w-full backdrop-filter backdrop-blur-sm pb-8">
           <div className="flex flex-row h-24 justify-between p-2">
             <div>
               <Link href="/">{children}</Link>
             </div>
-            <div className="hidden sm:flex flex-row">
+            <div className="flex flex-row justify-right text-white">
+            {/* Page Navigation links  */}
+            <div className="hidden sm:flex flex-row underlined-link mr-2">
               {contentfulPageLinks.map((link: PageLink, i: number) => {
                 return (
                   <Link
                     key={link.href}
-                    className={`topnav-link font-nectarine text-xl flex items-end px-1 mx-1 pb-1
-            relative before:content-[''] before:absolute before:block before:w-full before:h-[3px] 
-            before:bottom-0 before:left-0 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
-            before:transition before:ease-in-out before:duration-300
-            ${comparePathLocation === link.href && "before:scale-x-100"} `}
+                    className={`topnav-link md:text-xl flex items-end px-1 mx-1 pb-1
+                      relative before:content-[''] before:absolute before:block before:w-full before:h-[3px] 
+                      before:bottom-0 before:left-0 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
+                      before:transition before:ease-in-out before:duration-300
+                      ${comparePathLocation === link.href && "before:scale-x-100"} `}
                     href={"/" + link.href}
                   >
                     {link.name}
@@ -67,8 +73,17 @@ export default function TopNav({
                 );
               })}
             </div>
+            {/* Social Media Links */}
+            <div className="hidden sm:flex flex-row">
+              {contentfulIconLinks.map((link: IconLink,i: number) => 
+              <Link href={link.link} key={i} className={`flex items-end m-2`}>
+                  <Image src={link.icon} width={30} height={30} alt=""/>
+              </Link>
+              )}
+            </div>
+
+            </div>
           </div>
-          <div className="h-5" />
         </div>
       </div>
     </div>

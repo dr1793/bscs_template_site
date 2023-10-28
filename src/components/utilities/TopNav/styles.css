@@ -1,0 +1,4 @@
+/* styles.css */
+.underlined-link a:before {
+    background: white;
+}

@@ -12,8 +12,12 @@ module.exports = {
         groovyf: ['var(--font-groovy-fruity)'],
         guny: ['var(--font-gunydrops)'],
         naskle: ['var(--font-naskle)'],
-        nectarine: ['var(--font-nect)']
-      }
+        nectarine: ['var(--font-nect)'],
+        grotesk: ['var(--font-grotesk)']
+      },
+      colors: {
+        'bscs-yellow': '#DECC6D',
+      },
     },
   },
   plugins: [
