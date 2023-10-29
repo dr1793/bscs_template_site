@@ -56,10 +56,9 @@ export default function TopNav({
                         relative before:content-[''] before:absolute before:block before:w-full before:h-[3px] 
                         before:bottom-0 before:left-0 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
                         before:transition before:ease-in-out before:duration-300
-                        ${
-                          comparePathLocation === link.href &&
-                          "before:scale-x-100"
-                        } `}
+                        ${comparePathLocation === link.href &&
+          "before:scale-x-100"
+          } `}
         href={"/" + link.href}
       >
         {link.name}
@@ -75,11 +74,10 @@ export default function TopNav({
       />
       <div className="z-40 w-full sticky top-0">
         <div
-          className={`absolute flex flex-col w-full ${
-            !mobileMenuOpen && "backdrop-filter backdrop-blur-sm pb-8"
-          }`}
+          className={`absolute flex flex-col w-full ${!mobileMenuOpen && "backdrop-filter backdrop-blur-sm pb-8"
+            }`}
         >
-          <div className="flex flex-row h-24 justify-between p-2">
+          <div className="flex flex-row h-24 justify-between p-2 font-oswald">
             <div>
               <Link href="/">{children}</Link>
             </div>
@@ -90,15 +88,14 @@ export default function TopNav({
                 {textLinks}
               </div>
               {/* Social Media Links */}
-              <div className="flex flex-row"><IconLinks IconLinks={contentfulIconLinks}/></div>
+              <div className="flex flex-row"><IconLinks IconLinks={contentfulIconLinks} /></div>
             </div>
             {/* Mobile Nav Menu */}
             <div className="block sm:hidden flex items-center justify-center">
               <button
                 type="button"
-                className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 mr-2 mt-2 text-white ${
-                  mobileMenuOpen && "hidden"
-                }`}
+                className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 mr-2 mt-2 text-white ${mobileMenuOpen && "hidden"
+                  }`}
                 onClick={() => setMobileMenuOpen(true)}
               >
                 <Bars3Icon className="h-8 w-8" aria-hidden="true" />
@@ -140,7 +137,7 @@ export default function TopNav({
                         </Link>
                         {textLinks}
                       </div>
-                      <div className="flex flex-row mt-5"><IconLinks IconLinks={contentfulIconLinks}/></div>
+                      <div className="flex flex-row mt-5"><IconLinks IconLinks={contentfulIconLinks} /></div>
                     </div>
                   </div>
                 </Dialog.Panel>

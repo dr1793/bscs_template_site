@@ -5,7 +5,7 @@ type ButtonProps = {
   type: "primary" | "secondary";
   size: "lg" | "reg";
   text: string;
-  href?: string;
+  href?: string | null;
 };
 
 export default function BSCSButton({ type, size, text, href = ""}: ButtonProps) {
@@ -17,7 +17,7 @@ export default function BSCSButton({ type, size, text, href = ""}: ButtonProps) 
 
   const sizeClassButtonMap = {
     lg:"px-5 py-2 text-lg",
-    reg:"px-2 py-1 text-xs",
+    reg:"px-2 py-1 text-sm",
   }
 
   return (
