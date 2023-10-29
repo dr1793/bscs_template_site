@@ -1,6 +1,8 @@
 import React from "react";
+import Link from "next/link"
 import IconLinks from "./utilities/IconLinks/IconLinks";
 import { IconLink } from "@/app/layout";
+import BSCSButton from "./utilities/button";
 
 export default function Footer({
   classNames,
@@ -14,13 +16,22 @@ export default function Footer({
   icons: IconLink[];
 }) {
   return (
-    <div className={`footer p-4 bg-base-200 text-base-content items-center text-white ${classNames} flex flex-row justify-center`}>
-      <div className={`flex flex-1 font-grotesk text-2xl`}>{text}</div>
+    <div
+      className={`footer p-4 bg-base-200 text-base-content items-center text-white ${classNames} flex flex-row justify-center`}
+    >
+      <Link href="#" className={`flex flex-1 font-grotesk text-3xl`}>
+        {text}
+      </Link>
       <div className="flex flex-1 items-center justify-center">
         <IconLinks IconLinks={icons} />
       </div>
       <div className={`flex flex-1 justify-end mr-2`}>
-      <button>{buttonText}</button>
+        <BSCSButton
+          type="secondary"
+          text={buttonText}
+          href="/contact-us"
+          size='lg'
+        ></BSCSButton>
       </div>
     </div>
   );

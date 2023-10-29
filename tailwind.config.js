@@ -13,10 +13,12 @@ module.exports = {
         guny: ['var(--font-gunydrops)'],
         naskle: ['var(--font-naskle)'],
         nectarine: ['var(--font-nect)'],
-        grotesk: ['var(--font-grotesk)']
+        grotesk: ['var(--font-grotesk)'],
+        oswald: ['var(--font-oswald)']
       },
       colors: {
         'bscs-yellow': '#DECC6D',
+        'bscs-orange': '#E55937'
       },
     },
   },

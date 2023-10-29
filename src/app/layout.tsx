@@ -44,6 +44,7 @@ export default async function RootLayout({
   );
   useStore.setState({ pageInfo: cleanLinksWithKeys });
 
+  //Constructing the icon link list 
   const iconLinks: IconLink[] =
     data?.navigationBarCollection?.items[0].iconListCollection?.items.map(
       (item: {
@@ -56,11 +57,10 @@ export default async function RootLayout({
       }
     );
 
+  //Adding to the footer from contentful
   const footerText: string = data?.footerCollection?.items[0].text;
   const footerButtonText: string =
     data?.footerCollection?.items[0].footerContactButtonText;
-
-  console.log(footerButtonText)
 
   return (
     <html lang="en" data-theme="retro">

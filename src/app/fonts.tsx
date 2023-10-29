@@ -41,6 +41,11 @@ const _anzeigen_grotesk_d = localFont({
   variable: "--font-grotesk",
 });
 
+const _oswald = localFont({
+  src: "./_fonts/Oswald.ttf",
+  variable: "--font-oswald",
+});
+
 // 2
 const fonts: Fonts = {
   GroovyScript: _groovy_script,
@@ -48,7 +53,8 @@ const fonts: Fonts = {
   GunyDrops: _gunydrops,
   Naskle: _naskle,
   Nectarine: _nectarine,
-  AnzeigenGrotesk: _anzeigen_grotesk_d
+  AnzeigenGrotesk: _anzeigen_grotesk_d,
+  Oswald: _oswald
 };
 
 const fontVariables = Object.values(fonts).reduce(
