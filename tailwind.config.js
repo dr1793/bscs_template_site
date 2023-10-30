@@ -19,7 +19,8 @@ module.exports = {
       colors: {
         'bscs-yellow': '#DECC6D',
         'bscs-yellow-bright': '#ffe974',
-        'bscs-orange': '#E55937'
+        'bscs-orange': '#E55937',
+        'bscs-hot-purple':'#bd005b'
       },
     },
   },

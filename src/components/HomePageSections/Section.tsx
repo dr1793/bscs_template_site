@@ -6,17 +6,19 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { Document } from '/Users/david/Desktop/t_site/bscs-template/node_modules/@contentful/rich-text-types/dist/types/types';
 
 type PageSectionProps = {
+    children?: React.ReactNode;
     largeText: string;
     textAlign: 'left' | 'right' | 'center';
     subText: string | null;
     imageURL: string | null | undefined;
-    richText: Document | null | undefined;
-    buttonText: string | null;
-    buttonHref: string | null;
-    index: number | null;
+    richText?: Document | null | undefined;
+    buttonText?: string | null;
+    buttonHref?: string | null;
+    index?: number | null;
 };
 
 export default function SectionContainer({
+    children, 
     textAlign,
     imageURL,
     largeText,
@@ -100,6 +102,7 @@ export default function SectionContainer({
                             />
                         }
                         </div>
+                        {children}
                     </div>
                 </div>
             }

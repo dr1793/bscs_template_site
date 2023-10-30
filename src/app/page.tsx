@@ -9,6 +9,8 @@ import About from "@/components/About";
 import BSCSButton from "@/components/utilities/button";
 import SectionContainer from "@/components/HomePageSections/Section";
 import { Document } from '/Users/david/Desktop/t_site/bscs-template/node_modules/@contentful/rich-text-types/dist/types/types';
+import MailingListCTABanner from "@/components/MailingListCTABanner";
+import { sign } from "crypto";
 
 
 type CenterImage = {
@@ -54,6 +56,10 @@ export default async function Home() {
   const firstSectionData = data?.pageCardCollection?.items;
 
   const middleSectionData = data?.pageCardTypeBCollection?.items;
+
+  const signUpCardData = data?.pageCardSignUp
+
+  console.log(signUpCardData)
 
   return (
     <React.Fragment>
@@ -164,10 +170,29 @@ export default async function Home() {
             })
           }
         </div>
-
-
-        <Carousel id="selected-works"></Carousel>
-        <About id="about"></About>
+        <div
+          className={`bg-bscs-hot-purple text-white font-oswald flex flex-col p-6 w-full`}
+          style={{}}
+        >
+          <Carousel id="selected-works"></Carousel>
+        </div>
+        <div
+          className={`bg-bscs-yellow-bright font-oswald text-black flex flex-row items-center px-6 pb-4 pt-0 w-full`}
+          style={{ height: "40vh" }}
+        >
+          <SectionContainer
+            largeText={signUpCardData.largeText}
+            imageURL={signUpCardData.centerImage?.url}
+            subText={signUpCardData.subText}
+            textAlign={signUpCardData.textAlign}
+          >
+            <MailingListCTABanner
+              className=""
+              buttonText={signUpCardData.buttonText}
+              placeholder={signUpCardData.placeholder}
+            />
+          </SectionContainer>
+        </div>
       </main>
     </React.Fragment>
   );
@@ -199,6 +224,16 @@ const query = gql`
       image{
         url
       }
+    }
+    pageCardSignUp (id: "7ukjaOiOijS3UsK64czzOS"){
+        centerImage {
+          url
+        }
+        largeText
+        subText
+        textAlign
+        buttonText
+        inputPlaceholder
     }
     pageCardTypeBCollection (limit:10, order: order_ASC){
       items {

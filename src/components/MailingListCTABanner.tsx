@@ -10,11 +10,16 @@ import {
   useForm,
 } from "react-hook-form";
 import axios from "axios";
+import BSCSButton from "./utilities/button";
 
 export default function MailingListCTABanner({
   className,
+  buttonText = "Sign Up",
+  placeholder = "Email Address",
 }: {
   className: string;
+  buttonText?: string;
+  placeholder?: string;
 }) {
   const methods = useForm({ mode: "onBlur" });
   const [loading, setLoading] = useState<boolean>(false);
@@ -53,30 +58,27 @@ export default function MailingListCTABanner({
 
   return (
     <div className={`${className}`}>
-      <SectionContainer pageColor="bg-amber-800">
-        {" "}
-        <form
-          action="#"
-          method="POST"
-          className=""
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <div className="flex flex-row justify-between align-center ">
-            <div className="flex items-center justify-center w-full">
-              Join our mailing list!
+      <form
+        action="#"
+        method="POST"
+        className=""
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className="flex flex-row justify-between items-center">
+          <FormProvider {...methods}>
+            <div className="flex flex-col items-center">
+              <Input {...MAILING_LIST_EMAIL} label="" placeholder={placeholder}/>
             </div>
-            <FormProvider {...methods}>
-              <div className="flex flex-col">
-                <Input {...MAILING_LIST_EMAIL} />
-              </div>
-            </FormProvider>
-            <button type="submit" className="hover:text-white">
-              {" "}
-              Join{" "}
-            </button>
-          </div>
-        </form>
-      </SectionContainer>
+          </FormProvider>
+          <button type="submit" className="hover:text-white">
+            <BSCSButton
+              type="primary"
+              size="reg"
+              text={buttonText}
+            />
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

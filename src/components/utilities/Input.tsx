@@ -4,6 +4,7 @@ import { PatternFormat } from "react-number-format";
 import { ContactFormValue } from "@/lib/constants";
 
 interface InputProps extends ContactFormValue {
+  placeholder?: string | undefined;
   labelClasses?: string;
   inputClasses?: string;
 }
@@ -13,6 +14,7 @@ export default function Input({
   tagLabel,
   type,
   autoComplete,
+  placeholder,
   required = false,
   textArea = false,
   formatter = "",
@@ -20,7 +22,7 @@ export default function Input({
   inputClasses,
   validationPattern,
 }: InputProps) {
-  const { register, control, formState: { errors }} = useFormContext();
+  const { register, control, formState: { errors } } = useFormContext();
 
   const [value, setValue] = useState<string>("");
 
@@ -28,13 +30,15 @@ export default function Input({
 
   return (
     <React.Fragment>
-      <label
-        htmlFor={tagLabel}
-        className={`block text-sm font-semibold leading-6 text-gray-900 ${labelClasses}`}
-      >
-        {label}
-      </label>
-      <div className="mt-2">
+      {label &&
+        <label
+          htmlFor={tagLabel}
+          className={`block text-sm font-semibold leading-6 text-gray-900 ${labelClasses}`}
+        >
+          {label}
+        </label>
+      }
+      <div className="">
         {textArea ? (
           <textarea
             {...register(tagLabel, {
@@ -75,6 +79,7 @@ export default function Input({
             type={type}
             name={tagLabel}
             id={tagLabel}
+            placeholder={placeholder}
             autoComplete={autoComplete}
             className={inputStyles}
           />
