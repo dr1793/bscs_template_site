@@ -1,0 +1,4 @@
+.custom-list ul > li {
+    list-style-type: disc;
+    margin-left: 20px;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import BSCSButton from "../utilities/button";
+import './styles.css';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Document } from '/Users/david/Desktop/t_site/bscs-template/node_modules/@contentful/rich-text-types/dist/types/types';
 
@@ -41,7 +42,7 @@ export default function SectionContainer({
             {textAlign === 'center'
                 ?
                 <>
-                    <div className={" py-2 text-2xl"}>
+                    <div className={" font-bold py-2 text-2xl"}>
                         {largeText}
                     </div>
                     <div>
@@ -57,14 +58,14 @@ export default function SectionContainer({
                     }
                 </>
                 :
-                <div className={`h-[40vh] w-5/6 py-2 flex ${itemOrderMap[textAlign]}`}>
-                    <div className="flex-1">
+                <div className={`h-[26vh] w-full flex justify-center align-center ${itemOrderMap[textAlign]}`}>
+                    <div className="flex-1 flex flex-col justify-center max-w-xs">
                         {imageURL &&
                             <div
                                 className="flex-2 bg-white flex justify-center items-center"
                                 style={{
-                                    width: "100%",
-                                    height: "100%",
+                                    width: "80%",
+                                    height: "75%",
                                     position: "relative",
                                     overflow: "hidden"
                                 }}
@@ -82,13 +83,14 @@ export default function SectionContainer({
                             </div>
                         }
                     </div>
-                    <div className="flex-1">
-                        <div className=" text-2xl">
+                    <div className="flex-1 flex flex-col justify-center pr-3 max-w-sm">
+                        <div className=" flex-2 flex-grow text-3xl font-bold flex flex-col justify-end">
                             {largeText}
                         </div>
-                        <div>
+                        <div className="flex-1 text-md mt-3 custom-list">
                             {subText || (richText && documentToReactComponents(richText))}
                         </div>
+                        <div className="flex-1 text-xl flex-grow flex justify-center">
                         {(buttonText) &&
                             <BSCSButton
                                 type='secondary'
@@ -97,6 +99,7 @@ export default function SectionContainer({
                                 text={buttonText}
                             />
                         }
+                        </div>
                     </div>
                 </div>
             }
