@@ -15,6 +15,7 @@ import {
   MESSAGE_API_URL,
 } from "@/lib/constants";
 import LoadingSpinner from "./LoadingSpinner";
+import BSCSButton from "./button";
 
 const ContactFormComponent = () => {
   const methods = useForm({ mode: "onBlur" });
@@ -47,7 +48,7 @@ const ContactFormComponent = () => {
         Phone: values["phone-number"],
         Site: "Bed-Stuy Clothes Swap",
       },
-      receiver: BSCS_EMAIL,
+      Receiver: BSCS_EMAIL,
     };
 
     setLoading(true);
@@ -68,9 +69,6 @@ const ContactFormComponent = () => {
 
     return;
   };
-
-  const submitButtonStyles =
-    "w-40 mt-1 rounded-md  px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600";
 
   return (
     <form
@@ -102,28 +100,30 @@ const ContactFormComponent = () => {
               onChange={onCaptchaChange}
             />
             <div
-              className={`${
-                !serverError && "hidden"
-              } text-red-700 px-4 mb-2 relative`}
+              className={`${!serverError && "hidden"
+                } text-red-700 px-4 mb-2 relative`}
             >
               We&apos;re having trouble communicating with our servers. Try again
               later!
             </div>
-            <button
-              type="submit"
-              className={`bg-indigo-600 ${submitButtonStyles} 
-              ${serverError && " pointer-events-none bg-gray-500"}
-              ${loading && " pointer-events-none"} 
-              ${successSubmit && "bg-green-500 pointer-events-none "}
+            <BSCSButton
+              buttonType="submit"
+              type="primary"
+              size='lg'
+              styles={`
+                ${serverError && " pointer-events-none bg-gray-500 border-none"}
+                ${loading && " pointer-events-none border-none"} 
+                ${successSubmit && "bg-green-500 pointer-events-none border-none"}
               `}
-            >
-              {loading
-                ? // <LoadingSpinner size={35} />
+              text={
+                loading
+                  ? // <LoadingSpinner size={35} />
                   "loading"
-                : successSubmit
-                ? "Got your message!"
-                : " Send message "}
-            </button>
+                  : successSubmit
+                    ? "Got your message!"
+                    : " Send Message "
+              }
+            />
           </div>
         </div>
       </div>

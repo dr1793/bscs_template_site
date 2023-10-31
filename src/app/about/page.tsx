@@ -59,7 +59,6 @@ export default async function AboutPage() {
             </p>
           </div>
           {documentToReactComponents(rules.richText?.json)}
-
         </div>
       </div>
     </PageWrapper>

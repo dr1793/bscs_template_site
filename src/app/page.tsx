@@ -5,10 +5,9 @@ import { getRevalidateQuery } from "@/lib/apolloClient";
 import { gql } from "@apollo/client";
 import Banner from "@/components/Banner";
 import Carousel from "@/components/Carousel";
-import About from "@/components/About";
 import BSCSButton from "@/components/utilities/button";
 import SectionContainer from "@/components/HomePageSections/Section";
-import { Document } from '/Users/david/Desktop/t_site/bscs-template/node_modules/@contentful/rich-text-types/dist/types/types';
+import { Document } from '../../node_modules/@contentful/rich-text-types/dist/types/types';
 import MailingListCTABanner from "@/components/MailingListCTABanner";
 import { sign } from "crypto";
 
@@ -26,7 +25,6 @@ type PageCard = {
   buttonText: string;
   buttonHref: string;
 };
-
 
 type RichText = {
   __typename: 'PageCardTypeBRichText';
@@ -58,8 +56,6 @@ export default async function Home() {
   const middleSectionData = data?.pageCardTypeBCollection?.items;
 
   const signUpCardData = data?.pageCardSignUp
-
-  console.log(signUpCardData)
 
   return (
     <React.Fragment>
