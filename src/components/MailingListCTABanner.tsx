@@ -70,13 +70,12 @@ export default function MailingListCTABanner({
               <Input {...MAILING_LIST_EMAIL} label="" placeholder={placeholder}/>
             </div>
           </FormProvider>
-          <button type="submit" className="hover:text-white">
             <BSCSButton
               type="primary"
+              buttonType="submit"
               size="reg"
               text={buttonText}
             />
-          </button>
         </div>
       </form>
     </div>

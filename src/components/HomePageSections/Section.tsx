@@ -60,7 +60,7 @@ export default function SectionContainer({
                     }
                 </>
                 :
-                <div className={`h-[26vh] w-full flex justify-center align-center ${itemOrderMap[textAlign]}`}>
+                <div className={`h-[26vh] w-full flex justify-center align-center lg:justify-between ${itemOrderMap[textAlign]}`}>
                     <div className="flex-1 flex flex-col justify-center max-w-xs">
                         {imageURL &&
                             <div

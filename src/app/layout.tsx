@@ -11,6 +11,7 @@ import "../global_styles/output.css";
 import LogoIcon from "@/components/utilities/LogoIcon/LogoIcon";
 import { useStore } from "@/state/store";
 import fontVariables from "./fonts";
+import BSCSButton from "@/components/utilities/button";
 
 export const metadata = {
   title: HOME_PAGE_META_NAME,
@@ -75,7 +76,15 @@ export default async function RootLayout({
           <LogoIcon rotation color={"white"} size={110} />
         </TopNav>
         <div className="bg-white">{children}</div>
-        <Footer classNames={``} text={footerText} buttonText={footerButtonText} icons={iconLinks}/>
+        <div className="fixed bottom-4 right-4 z-50 opacity-80">
+          <BSCSButton
+            type="primary"
+            text="V"
+            size="reg"
+            styles="hover:shadow-xl hover:outline-none focus:outline-none"
+          />
+        </div>
+        <Footer classNames={``} text={footerText} buttonText={footerButtonText} icons={iconLinks} />
       </body>
     </html>
   );

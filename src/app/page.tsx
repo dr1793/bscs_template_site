@@ -89,7 +89,7 @@ export default async function Home() {
         {/* {'First Section'} */}
         <div
           className={`bg-bscs-yellow-bright text-black flex flex-row px-6 py-10 w-full`}
-          style={{ height: "400px" }}
+          style={{ height: "50vh" }}
         >
           {firstSectionData.map((pageCard: PageCard, i: number) => {
             return (
@@ -104,7 +104,7 @@ export default async function Home() {
                       width: "100%",
                       height: "100%",
                       position: "relative",
-                      overflow: "hidden"
+                      overflow: "hidden",
                     }}
                   >
                     <Image
@@ -144,7 +144,7 @@ export default async function Home() {
         <Banner id="home" imageURL={data?.homeBannerImage?.image.url} tailwindHeight="h-[45vh]"></Banner>
         {/* Middle section */}
         <div
-          className={`bg-bscs-orange text-white font-oswald flex flex-col p-6 w-full`}
+          className={`bg-bscs-orange text-white font-oswald flex flex-col p-6 w-full lg:px-60`}
           style={{}}
         >
           {
@@ -153,7 +153,7 @@ export default async function Home() {
               return (
                 <div
                   key={i}
-                  className={`flex flex-1 flex-col items-center h-full `}
+                  className={`flex flex-1 my-3 sm:my-0 flex-col items-center h-full`}
                 >
                   <SectionContainer
                     largeText={sectionCard.largeText}
@@ -177,7 +177,7 @@ export default async function Home() {
           <Carousel id="selected-works"></Carousel>
         </div>
         <div
-          className={`bg-bscs-yellow-bright font-oswald text-black flex flex-row items-center px-6 pb-4 pt-0 w-full`}
+          className={`bg-bscs-yellow-bright font-oswald text-black flex flex-row items-center px-6 pb-4 pt-0 w-full lg:px-60`}
           style={{ height: "40vh" }}
         >
           <SectionContainer

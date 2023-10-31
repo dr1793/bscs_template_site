@@ -17,7 +17,7 @@ export default function Footer({
 }) {
   return (
     <div
-      className={`footer p-4 bg-base-200 text-base-content items-center text-white ${classNames} flex flex-row justify-center`}
+      className={`footer p-4 bg-base-200 text-base-content items-center text-white ${classNames} flex flex-row justify-center lg:px-60`}
     >
       <Link href="/" className={`flex flex-1 font-grotesk text-3xl`}>
         {text}
