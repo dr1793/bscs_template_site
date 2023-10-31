@@ -3,13 +3,13 @@ import Image from "next/image";
 import BSCSButton from "../utilities/button";
 import './styles.css';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { Document } from '/Users/david/Desktop/t_site/bscs-template/node_modules/@contentful/rich-text-types/dist/types/types';
+import { Document } from '../../../node_modules/@contentful/rich-text-types/dist/types/types';
 
 type PageSectionProps = {
     children?: React.ReactNode;
     largeText: string;
     textAlign: 'left' | 'right' | 'center';
-    subText: string | null;
+    subText?: string | null;
     imageURL: string | null | undefined;
     richText?: Document | null | undefined;
     buttonText?: string | null;
