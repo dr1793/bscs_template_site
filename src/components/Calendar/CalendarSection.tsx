@@ -109,7 +109,7 @@ export default function CalendarSection({
                   color: eventDates.includes(day.date) ? "white" : "",
                 }}
               >
-                <Link href={getEventPageURL(day.date)|| ""}>
+                <Link href={getEventPageURL(day.date) || "javascript:void(0)"}>
                   <time
                     dateTime={day.date}
                     className={classNames(

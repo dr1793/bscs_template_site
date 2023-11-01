@@ -1,5 +1,4 @@
 import React from "react";
-import PageTopSectionContainer from "@/components/PageTopSectionContainer";
 import PageWrapper from "@/components/utilities/PageWrapper";
 import { useStore } from "@/state/store";
 import { getRevalidateQuery } from "@/lib/apolloClient";

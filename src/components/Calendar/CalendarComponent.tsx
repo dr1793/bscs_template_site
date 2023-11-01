@@ -35,7 +35,7 @@ const getDaysfromMonthDate = (monthDate: Date): Day[] => {
 function monthsFromContentfulEvents(events: contentfulEventObject[]): Month[] {
   let months = eachMonthOfInterval({
     start: startOfMonth(parseISO(events[0].datetime)),
-    end: startOfMonth(parseISO(events[events.length - 1].datetime)),
+    end: startOfMonth(parseISO(new Date().toISOString())),
   }).map((monthDate) => ({
     name: format(monthDate, "MMMM yyyy"),
     days: getDaysfromMonthDate(monthDate),
@@ -80,66 +80,72 @@ export default async function CalendarComponent() {
 
   // Add the slug to each event
   const orderedEventsandSlugs: contentfulEventObjectWithSlug[] = orderedEvents.map((event: contentfulEventObject): contentfulEventObjectWithSlug => {
-    return {...event, slug: `new-events/${createSlug(event.sys.id)}`
-  }})
+    return {
+      ...event, slug: `new-events/${createSlug(event.sys.id)}`
+    }
+  })
 
-const { beforeToday, afterToday } = splitEventsByDate(orderedEventsandSlugs);
+  const { beforeToday, afterToday } = splitEventsByDate(orderedEventsandSlugs);
 
-return (
-  <div className="mx-12">
-    <div className="relative grid grid-cols-1 gap-x-14">
-      <CalendarSection months={months} events={orderedEventsandSlugs} />
+  return (
+    <div className="mx-12">
+      <div className="relative grid grid-cols-1 gap-x-14">
+        <CalendarSection months={months} events={orderedEventsandSlugs} />
+      </div>
+      <section className="mt-12">
+        <h2 className="text-base font-semibold leading-6 text-gray-900">
+          Upcoming Events
+        </h2>
+        {afterToday.length ?
+          <ol className="mt-2 divide-y divide-gray-200 text-sm leading-6 text-gray-500">
+            {afterToday.map((event, i) => (
+              <li key={i}>
+                <Link
+                  href={event.slug}
+                  key={i}
+                  className="py-4 sm:flex hover:bg-gray-100"
+                >
+                  <time
+                    dateTime={format(parseISO(event.datetime), "yyyy-MM-dd")}
+                    className="w-50 flex-none mr-20"
+                  >
+                    {format(parseISO(event.datetime), "eeee, MMMM dd")}
+                  </time>
+                  <p className="mt-2 flex-auto sm:mt-0">{event.description?.json && documentToReactComponents(event.description?.json)}</p>
+                </Link>
+              </li>
+            ))}
+          </ol>
+          :
+          <div className="text-center pt-2">--TBD--</div>
+        }
+      </section>
+      <section className="mt-12">
+        <h2 className="text-base font-semibold leading-6 text-gray-900">
+          Past Events
+        </h2>
+        <ol className="mt-2 divide-y divide-gray-200 text-sm leading-6 text-gray-500">
+          {beforeToday.map((event, i) => (
+            <li key={i}>
+              <Link
+                href={event.slug}
+                key={i}
+                className="py-4 sm:flex hover:bg-gray-100"
+              >
+                <time
+                  dateTime={format(parseISO(event.datetime), "yyyy-MM-dd")}
+                  className="w-50 flex-none mr-20"
+                >
+                  {format(parseISO(event.datetime), "eeee, MMMM dd")}
+                </time>
+                <p className="mt-2 flex-auto sm:mt-0">{event.description?.json && documentToReactComponents(event.description?.json)}</p>
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </section>
     </div>
-    <section className="mt-12">
-      <h2 className="text-base font-semibold leading-6 text-gray-900">
-        Upcoming Events
-      </h2>
-      <ol className="mt-2 divide-y divide-gray-200 text-sm leading-6 text-gray-500">
-        {afterToday.map((event, i) => (
-          <li key={i}>
-            <Link
-              href={event.slug}
-              key={i}
-              className="py-4 sm:flex hover:bg-gray-100"
-            >
-              <time
-                dateTime={format(parseISO(event.datetime), "yyyy-MM-dd")}
-                className="w-50 flex-none mr-20"
-              >
-                {format(parseISO(event.datetime), "eeee, MMMM dd")}
-              </time>
-              <p className="mt-2 flex-auto sm:mt-0">{event.description?.json && documentToReactComponents(event.description?.json)}</p>
-            </Link>
-          </li>
-        ))}
-      </ol>
-    </section>
-    <section className="mt-12">
-      <h2 className="text-base font-semibold leading-6 text-gray-900">
-        Past Events
-      </h2>
-      <ol className="mt-2 divide-y divide-gray-200 text-sm leading-6 text-gray-500">
-        {beforeToday.map((event, i) => (
-          <li key={i}>
-            <Link
-              href={event.slug}
-              key={i}
-              className="py-4 sm:flex hover:bg-gray-100"
-            >
-              <time
-                dateTime={format(parseISO(event.datetime), "yyyy-MM-dd")}
-                className="w-50 flex-none mr-20"
-              >
-                {format(parseISO(event.datetime), "eeee, MMMM dd")}
-              </time>
-              <p className="mt-2 flex-auto sm:mt-0">{event.description?.json && documentToReactComponents(event.description?.json)}</p>
-            </Link>
-          </li>
-        ))}
-      </ol>
-    </section>
-  </div>
-);
+  );
 }
 
 const query = gql`
