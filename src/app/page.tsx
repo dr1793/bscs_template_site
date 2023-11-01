@@ -55,7 +55,9 @@ export default async function Home() {
 
   const middleSectionData = data?.pageCardTypeBCollection?.items;
 
-  const signUpCardData = data?.pageCardSignUp
+  const signUpCardData = data?.pageCardSignUp;
+
+  const galleryImages = data?.galleryImageCollection.items;
 
   return (
     <React.Fragment>
@@ -167,10 +169,10 @@ export default async function Home() {
           }
         </div>
         <div
-          className={`bg-bscs-hot-purple text-white font-oswald flex flex-col p-6 w-full`}
+          className={`bg-bscs-hot-purple text-white font-oswald flex flex-col p-6 w-full h-auto]`}
           style={{}}
         >
-          <Carousel id="selected-works"></Carousel>
+          <Carousel id="selected-works" pictureURLs={galleryImages} ></Carousel>
         </div>
         <div
           className={`bg-bscs-yellow-bright font-oswald text-black flex flex-row items-center px-6 pb-4 pt-0 w-full lg:px-60`}
@@ -245,6 +247,14 @@ const query = gql`
         buttonHref
         largeText
         textAlign
+      }
+    }
+    galleryImageCollection (limit:12, order: title_ASC) {
+      items {
+        title
+        src {
+          url
+        }
       }
     }
   }
