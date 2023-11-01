@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from 'next/link';
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import { Month, contentfulEventObject } from "./types";
 import {
@@ -15,7 +16,7 @@ export default function CalendarSection({
   events,
 }: {
   months: Month[];
-  events: contentfulEventObject[];
+  events: (contentfulEventObject & { slug: string; })[];
 }) {
   const [monthOffSet, setMonthOffSet] = useState<number>(0);
 
@@ -38,6 +39,14 @@ export default function CalendarSection({
       (event) => standardDateFormatFromISO(event.datetime) === date
     )?.picture.url;
   }
+
+  function getEventPageURL(date: string): string | undefined {
+    if (!eventDates.includes(date)) return undefined
+    return events.find(
+      (event) => standardDateFormatFromISO(event.datetime) === date
+    )?.slug;
+  }
+
 
   return (
     <React.Fragment>
@@ -100,15 +109,17 @@ export default function CalendarSection({
                   color: eventDates.includes(day.date) ? "white" : "",
                 }}
               >
-                <time
-                  dateTime={day.date}
-                  className={classNames(
-                    day.isToday && "bg-indigo-600 font-semibold text-white",
-                    "mx-auto flex h-7 w-7 items-center justify-center rounded-full"
-                  )}
-                >
-                  {day.date.split("-").pop()?.replace(/^0/, "")}
-                </time>
+                <Link href={getEventPageURL(day.date)|| ""}>
+                  <time
+                    dateTime={day.date}
+                    className={classNames(
+                      day.isToday && "bg-indigo-600 font-semibold text-white",
+                      "mx-auto flex h-7 w-7 items-center justify-center rounded-full"
+                    )}
+                  >
+                    {day.date.split("-").pop()?.replace(/^0/, "")}
+                  </time>
+                </Link>
               </button>
             );
           })}

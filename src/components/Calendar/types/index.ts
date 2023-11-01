@@ -1,3 +1,4 @@
+import { Document } from '../../../../node_modules/@contentful/rich-text-types/dist/types/types';
 export interface Day {
   date: string;
   isCurrentMonth?: boolean;
@@ -9,11 +10,16 @@ export interface Month {
   days: Day[];
 }
 
+type RichText = {
+  __typename: 'PageCardTypeBRichText';
+  json: Document;
+};
+
 export type contentfulEventObject = {
   datetime: string;
   displayField: string;
-  description: string;
+  description: RichText;
   sys: { id: string };
   picture: { url: string };
-  [key: string]: string | number | { id: string } | { url: string };
+  [key: string]: string | number | RichText | { id: string } | { url: string };
 };

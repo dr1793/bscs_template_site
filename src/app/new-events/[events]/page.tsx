@@ -86,7 +86,7 @@ const routeQuery = gql`
 
 const pageQuery = gql`
   query eventCollectionQuery {
-    eventCollection {
+    eventCollection (limit: 20) {
       items {
         sys {
           id
@@ -99,7 +99,9 @@ const pageQuery = gql`
           lat
           lon
         }
-        description
+        description {
+          json
+        }
         picture {
           url
         }

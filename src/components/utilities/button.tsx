@@ -33,7 +33,6 @@ export default function BSCSButton({ type, buttonType="button", styles, size, te
         focus-visible:outline focus-visible:outline-2 
         focus-visible:outline-offset-2 focus-visible:outline-indigo-600
         ${styles}
-        outline-none
         `
     }
     >

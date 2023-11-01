@@ -7,8 +7,6 @@ import { useStore } from "@/state/store";
 import CalendarComponent from "@/components/Calendar/CalendarComponent";
 import { getRevalidateQuery } from "@/lib/apolloClient";
 import PageBannerSection from "@/components/utilities/PageBannerSection/PageBannerSection";
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { Document } from '../../../node_modules/@contentful/rich-text-types/dist/types/types';
 
 export default async function EventMusts() {
   const pageList = useStore.getState().pageInfo;
@@ -27,8 +25,7 @@ export default async function EventMusts() {
         headerFontSize={headerFontSize}
         subheaderFontSize={subheaderFontSize}
       />
-      <div className="w-full">
-        <PageTopSectionContainer>Upcoming Events</PageTopSectionContainer>
+      <div className="w-full p-10 pt-20">
         {/* @ts-expect-error Server Component */}
         <CalendarComponent />
       </div>
