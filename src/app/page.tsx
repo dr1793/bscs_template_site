@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import styles from "./page.module.css";
 import { getRevalidateQuery } from "@/lib/apolloClient";
 import { gql } from "@apollo/client";
 import Banner from "@/components/Banner";
@@ -9,7 +8,8 @@ import BSCSButton from "@/components/utilities/button";
 import SectionContainer from "@/components/HomePageSections/Section";
 import { Document } from '../../node_modules/@contentful/rich-text-types/dist/types/types';
 import MailingListCTABanner from "@/components/MailingListCTABanner";
-import { sign } from "crypto";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import ScrollableDiv from "@/components/utilities/ScrollableDiv";
 
 
 type CenterImage = {
@@ -44,7 +44,6 @@ type PageCardTypeB = {
 
 
 export default async function Home() {
-  //Use a promise and a timeout to make the backdrop last a second longer
   const { data } = await getRevalidateQuery(query);
   const hero = data?.homeCollection?.items[0];
 
@@ -52,11 +51,8 @@ export default async function Home() {
   const subheaderFontSize = `calc(${(4 - 1) * 1.2}vw + 1rem)`;
 
   const firstSectionData = data?.pageCardCollection?.items;
-
   const middleSectionData = data?.pageCardTypeBCollection?.items;
-
   const signUpCardData = data?.pageCardSignUp;
-
   const galleryImages = data?.galleryImageCollection.items;
 
   return (
@@ -68,21 +64,24 @@ export default async function Home() {
             backgroundImage: `url(${hero.picture.url})`,
           }}
         >
-          <div className="absolute inset-0 bg-black opacity-25"> </div>
-          <div className="relative p-4 text-white flex flex-col items-center justify-center h-full">
-            <p
-              className="text-white font-grotesk"
-              style={{ fontSize: headerFontSize }}
-            >
-              {hero.header}
-            </p>
-            <p
-              className="text-bscs-yellow font-grotesk"
-              style={{ fontSize: subheaderFontSize }}
-            >
-              {hero.headerSubText}
-            </p>
-          </div>
+          <ScrollableDiv className="h-[100vh]">
+            <div className="absolute inset-0 bg-black opacity-25" />
+            <div className="relative p-4 text-white flex flex-col items-center justify-center h-full">
+              <p
+                className="text-white font-grotesk"
+                style={{ fontSize: headerFontSize }}
+              >
+                {hero.header}
+              </p>
+              <p
+                className="text-bscs-yellow font-grotesk"
+                style={{ fontSize: subheaderFontSize }}
+              >
+                {hero.headerSubText}
+              </p>
+              <ChevronDownIcon className="h-12 w-14 z-10 absolute bottom-0" />
+            </div>
+          </ScrollableDiv>
         </div>
         {/* {'First Section'} */}
         <div
@@ -207,7 +206,7 @@ const query = gql`
         }
       }
     }
-    pageCardCollection (limit: 5){
+    pageCardCollection (limit: 5, order:largeText_DESC){
       items {
         centerImage {
           url
