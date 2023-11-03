@@ -18,7 +18,7 @@ type PageSectionProps = {
 };
 
 export default function SectionContainer({
-    children, 
+    children,
     textAlign,
     imageURL,
     largeText,
@@ -72,16 +72,18 @@ export default function SectionContainer({
                                     overflow: "hidden"
                                 }}
                             >
-                                <Image
-                                    fill
-                                    quality={100}
-                                    src={imageURL}
-                                    alt={`swap image ${index}`}
-                                    style={{
-                                        objectFit: 'fill',
-                                    }}
-                                    sizes="100vh"
-                                />
+                                    <Image
+                                        className="bg-bscs-orange"
+                                        fill
+                                        quality={100}
+                                        src={imageURL}
+                                        alt={`swap image ${index}`}
+                                        style={{
+                                            // backgroundColor: '#E55937',
+                                            objectFit: 'fill',
+                                        }}
+                                        sizes="100vh"
+                                    />
                             </div>
                         }
                     </div>
@@ -93,14 +95,14 @@ export default function SectionContainer({
                             {subText || (richText && documentToReactComponents(richText))}
                         </div>
                         <div className="flex-1 text-xl flex-grow flex justify-center">
-                        {(buttonText) &&
-                            <BSCSButton
-                                type='secondary'
-                                size='reg'
-                                href={buttonHref}
-                                text={buttonText}
-                            />
-                        }
+                            {(buttonText) &&
+                                <BSCSButton
+                                    type='secondary'
+                                    size='reg'
+                                    href={buttonHref}
+                                    text={buttonText}
+                                />
+                            }
                         </div>
                         {children}
                     </div>
