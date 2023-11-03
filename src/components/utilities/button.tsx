@@ -6,7 +6,7 @@ type ButtonProps = {
   styles?: string;
   buttonType?: "button" | "submit";
   size: "lg" | "reg";
-  text: string;
+  text: string | React.ReactNode;
   href?: string | null;
 };
 

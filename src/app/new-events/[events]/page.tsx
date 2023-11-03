@@ -1,10 +1,18 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { getRevalidateQuery } from "@/lib/apolloClient";
 import { addHTTPs, createSlug } from "@/lib/utilityFunctions";
 import { contentfulEventObject } from "@/components/Calendar/types";
 import { gql } from "@apollo/client";
 import PageTopSectionContainer from "@/components/PageTopSectionContainer";
+import { ChevronLeftIcon } from "@heroicons/react/20/solid";
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import BSCSButton from "@/components/utilities/button";
+import {
+  parseISO,
+  format,
+} from "date-fns";
 
 export const dynamicParams = false;
 
@@ -42,22 +50,46 @@ export default async function EventsPage({
     (event: contentfulEventObject) => createSlug(event.sys.id) === events
   );
 
+  const backButton =
+    <div className="flex flex-row text-center align-center justify-center">
+      <ChevronLeftIcon className="h-8 w-8 z-10 -ml-2" />
+      <div className="flex flex-col justify-center mb-1 mr-1">
+        BACK
+      </div>
+    </div>
+
   return (
     <React.Fragment>
-      <PageTopSectionContainer>EventsPage</PageTopSectionContainer>
-      <div className="px-12">
-        <p>{JSON.stringify(event.displayField)}</p>
-        <a className="link link-primary" href={addHTTPs(event.eventbriteLink)}>
-          {" "}
-          Here is the link to our eventbrite!
-        </a>
-        <br />
-      </div>
-      <div className="px-8 py-10">
-        <Link className="link link-hover" href="/new-events">
-          {" "}
-          {"<"}{" "}
-        </Link>
+      <div className="h-[93vh] bg-bscs-yellow">
+        <PageTopSectionContainer>
+          <BSCSButton href="/new-events" text={backButton} type="primary" size="reg" />
+        </PageTopSectionContainer>
+        <div className="px-12 flex flex-row h-[50vh]">
+          <div className="flex flex-1">
+            <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+              <Link href={addHTTPs(event.eventbriteLink)}>
+                <Image
+                  src={event.flierPic.url}
+                  alt={`${event.displayField}`}
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </Link>
+            </div>
+          </div>
+          <div className="flex flex-1 flex-col justify-between">
+            <p className="font-bold">{JSON.stringify(event.displayField)}</p>
+            <p className="italic">{(format(parseISO(event.datetime), "MMMM d, yyyy 'at' h a"))}</p>
+            <text>
+              {documentToReactComponents(event.description.json)}
+            </text>
+            <a className="link link-primary text-center" href={addHTTPs(event.eventbriteLink)}>
+              {" "}
+              RSVP here!
+            </a>
+            <br />
+          </div>
+        </div>
       </div>
     </React.Fragment>
   );
@@ -106,6 +138,9 @@ const pageQuery = gql`
           url
         }
         eventbriteLink
+        flierPic {
+          url
+        }
       }
     }
   }

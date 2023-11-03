@@ -76,14 +76,14 @@ export default async function RootLayout({
           <LogoIcon rotation color={"white"} size={110} />
         </TopNav>
         <div className="bg-white">{children}</div>
-        <div className="fixed bottom-4 right-4 z-50 opacity-80">
+        {/* <div className="fixed bottom-4 right-4 z-50 opacity-80">
           <BSCSButton
             type="primary"
             text="V"
             size="reg"
             styles="hover:shadow-xl hover:outline-none focus:outline-none"
           />
-        </div>
+        </div> */}
         <Footer classNames={``} text={footerText} buttonText={footerButtonText} icons={iconLinks} />
       </body>
     </html>

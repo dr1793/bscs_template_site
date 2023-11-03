@@ -60,6 +60,7 @@ export default function TopNav({
           "before:scale-x-100"
           } `}
         href={"/" + link.href}
+        onClick={() => setMobileMenuOpen(false)}
       >
         {link.name}
       </Link>
@@ -123,7 +124,9 @@ export default function TopNav({
                   </div>
                   <div className="mt-6 flow-root">
                     <div className="-my-6 text-white">
-                      <div className="space-y-2 py-6 mt-10 text-3xl underlined-link">
+                      <div
+                        className="space-y-2 py-6 mt-10 text-3xl underlined-link"
+                      >
                         <Link
                           href={"/"}
                           className={`flex items-end m-2
@@ -132,6 +135,7 @@ export default function TopNav({
                           before:transition before:ease-in-out before:duration-300
                           ${comparePathLocation === "" && "before:scale-x-100"} 
                           `}
+                          onClick={() => setMobileMenuOpen(false)}
                         >
                           Home Page
                         </Link>

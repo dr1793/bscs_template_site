@@ -107,6 +107,7 @@ export default function CalendarSection({
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   color: eventDates.includes(day.date) ? "white" : "",
+                  backgroundColor: getEventPictureURL(day.date) ? "#ffe974" : "white"
                 }}
               >
                 <Link href={getEventPageURL(day.date) || "javascript:void(0)"}>
