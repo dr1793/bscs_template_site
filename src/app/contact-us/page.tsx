@@ -27,18 +27,16 @@ export default async function ContactForm() {
         headerFontSize={headerFontSize}
         subheaderFontSize={subheaderFontSize}
       />
-      <div className="mx-auto grid max-w-7xl grid-cols-2 font-oswald ml-5">
-
-        <div className="text-white flex flex-col justify-center mb-20">
-
+      <div className="mx-auto grid md:grid-cols-2 font-oswald bg-bscs-hot-purple flex lg:px-20">
+        <div className="text-white flex flex-col justify-center sm:justify-start sm:pt-20 lg:pt-40">
           <div
-            className="absolute h-[] inset-y-0 left-0 -z-10 w-full overflow-hidden bg-bscs-hot-purple ring-1 ring-gray-900/10 lg:w-1/2 "
+            className="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-bscs-hot-purple ring-1 ring-gray-900/10 lg:w-1/2"
           >
           </div>
-          <h1 className="text-3xl font-bold tracking-tight">
+          <h1 className="text-3xl font-bold tracking-tight pt-10 pl-10 sm:text-center">
             {hero.largeText}
           </h1>
-          <dl className="mt-10 space-y-4 text-base leading-7 ">
+          <dl className="mt-10 space-y-4 text-base leading-7 pl-10">
             {/* <div className="flex gap-x-4">
               <dt className="flex-none">
                 <span className="sr-only">Telephone</span>
@@ -53,7 +51,7 @@ export default async function ContactForm() {
                 </a>
               </dd>
             </div> */}
-            <div className="flex gap-x-4">
+            <div className="flex gap-x-4 sm:justify-center">
               <dt className="flex-none">
                 <span className="sr-only">Email</span>
                 <EnvelopeIcon

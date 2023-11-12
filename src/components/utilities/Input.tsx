@@ -33,7 +33,7 @@ export default function Input({
       {label &&
         <label
           htmlFor={tagLabel}
-          className={`block text-sm font-semibold leading-6 text-white ${labelClasses}`}
+          className={`block text-sm font-semibold leading-6 text-white ${labelClasses} md:text-xl`}
         >
           {label}
         </label>
@@ -84,7 +84,7 @@ export default function Input({
         />
       )}
       {errors[tagLabel] && (
-        <div className="text-red-700">
+        <div className="text-white text-lg">
           {String(errors[tagLabel]?.message)}
         </div>
       )}

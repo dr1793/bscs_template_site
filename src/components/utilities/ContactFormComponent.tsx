@@ -74,16 +74,16 @@ const ContactFormComponent = () => {
     <form
       action="#"
       method="POST"
-      className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
+      className="px-6 pb-12 pt-10 sm:pt-20 sm:pb-32 lg:px-8 lg:py-48"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
+      <div className="lg:mr-0 lg:max-w-lg">
         <div className="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
           <FormProvider {...methods}>
             {CONTACT_FORM_VALUES.map((value, i) => {
               return (
                 <div
-                  className={`${value?.twoCols ? "" : `sm:col-span-2`} font-oswald`}
+                  className={`${value?.twoCols ? "" : `sm:col-span-2`} font-oswald lg:text-5xl`}
                   key={`${i}-${value.label}`}
                 >
                   <Input {...value} />

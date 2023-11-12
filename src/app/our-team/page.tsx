@@ -44,14 +44,17 @@ export default async function OurTeam() {
       <ul className={`w-full bg-bscs-yellow text-white font-oswald flex flex-row p-10 flex-wrap justify-center`}>
         {teamCards.map((teamCard: TeamCard, i: number) => {
           return (
-            <div key={i} className="text-black w-1/3 px-5">
-              <Image
-                quality={100}
-                width={50}
-                height={50}
-                src={teamCard.bioImage.url}
-                alt={`${teamCard.memberName} pic`}
-              />
+            <div key={i} className="text-black sm:w-1/3 lg:w-1/5 px-5 py-6">
+              <div className="w-full h-1/2 w-full">
+                <Image
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: '100%', height: '100%' }} 
+                  src={teamCard.bioImage.url}
+                  alt={`${teamCard.memberName} pic`}
+                />
+              </div>
               <p className="text-bscs-orange font-bold">{teamCard.memberName.toUpperCase()}</p>
               <p>{teamCard.title}</p>
               <p className="py-3">{teamCard.pronouns}</p>

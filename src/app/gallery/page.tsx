@@ -27,11 +27,11 @@ export default async function Gallery() {
         subheaderFontSize={subheaderFontSize}
       />
       <div className=" w-full bg-bscs-yellow">
-        <PageTopSectionContainer>
-          <GalleryPageGallery
-            galleryPictures={galleryPictures}
-          />
-        </PageTopSectionContainer>
+          <div className=" w-full bg-bscs-yellow pt-10 px-5">
+            <GalleryPageGallery
+              galleryPictures={galleryPictures}
+            />
+          </div>
       </div>
     </PageWrapper>
   );
