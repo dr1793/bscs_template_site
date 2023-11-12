@@ -13,7 +13,6 @@ const ScrollableDiv: React.FC<ScrollableDivProps> = ({
     className
 }) => {
     const [scrolled, setScrolled] = useState(false) //sessionStorage.getItem('scrolled')==='true')
-    console.log(scrolled)
 
     const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
         const divElement = event.currentTarget;

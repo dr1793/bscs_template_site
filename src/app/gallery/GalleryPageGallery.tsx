@@ -6,7 +6,7 @@ import GalleryModal from '@/components/GalleryModal';
 
 
 type GalleryPageGalleryProps = {
-    galleryPictures: { bigImage: { url: string } }[];
+    galleryPictures: { bigImage: { url: string }; title: string; }[];
 }
 
 const GalleryPageGallery: React.FC<GalleryPageGalleryProps> = ({ galleryPictures }) => {
@@ -52,7 +52,7 @@ const GalleryPageGallery: React.FC<GalleryPageGalleryProps> = ({ galleryPictures
                 setIsModalOpen={setIsModalOpen}
                 pictureIndex={pictureIndex}
                 setPictureIndex={setPictureIndex}
-                centerX={true}
+                centerX={false}
             />
         </>
     )

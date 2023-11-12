@@ -79,6 +79,7 @@ export default function SectionContainer({
                                         src={imageURL}
                                         alt={`swap image ${index}`}
                                         style={{
+                                            // backgroundColor: '#E55937',
                                             objectFit: 'contain',
                                         }}
                                         sizes="100vh"

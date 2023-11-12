@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useRef } from 'react';
+import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 import { ChevronLeftIcon, ChevronRightIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import Image from 'next/image';
 
@@ -29,22 +30,26 @@ const GalleryModal: React.FC<GalleryModalProps> = ({ pictureURLs, isModalOpen, s
                 <div
                     className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center"
                 >
-                    <XMarkIcon className={`h-6 w-6 absolute ${centerX ? 'top-10' : 'top-1/4'} right-4 cursor-pointer z-10 text-white`} onClick={() => setIsModalOpen(false)} />
-                    {/* Modal content goes here */}
-                    <div
-                        className=""
-                        style={{ maxWidth: '20vw', maxHeight: '60vh' }}
-                    >
-                    <ChevronLeftIcon className="h-14 w-14 z-10 absolute bottom-1/2 left-4 animate-pulse" onClick={() => { setPictureIndex(mod(pictureIndex - 1, pictureURLs.length)) }} />
-                        <Image
-                            alt={`Gallery Image ${pictureIndex}`}
-                            src={imageUrl}
-                            layout="fill"
-                            objectFit="contain"
-                        />
-                    <ChevronRightIcon className="h-14 w-14 z-10 absolute bottom-1/2 right-4 animate-pulse" onClick={() => { setPictureIndex(mod(pictureIndex + 1, pictureURLs.length)) }} />
-                    </div>
-                </div>
+                    <XMarkIcon className={`h-10 w-10 absolute ${centerX ? 'top-10' : 'top-1/4'} right-4 cursor-pointer z-10 text-red-700 animate-pulse`} onClick={() => setIsModalOpen(false)} />
+                    {/* Modal Content*/}
+                    <ClickAwayListener className="z-5" onClickAway={() => setIsModalOpen(false)}>
+                        <>
+                            <div
+                                className=""
+                                style={{ maxWidth: '20vw', maxHeight: '60vh' }}
+                            >
+                                <ChevronLeftIcon className="h-14 w-14 z-10 absolute bottom-1/2 left-4 animate-pulse" onClick={() => { setPictureIndex(mod(pictureIndex - 1, pictureURLs.length)) }} />
+                                <Image
+                                    alt={`Gallery Image ${pictureIndex}`}
+                                    src={imageUrl}
+                                    layout="fill"
+                                    objectFit="contain"
+                                />
+                                <ChevronRightIcon className="h-14 w-14 z-10 absolute bottom-1/2 right-4 animate-pulse" onClick={() => { setPictureIndex(mod(pictureIndex + 1, pictureURLs.length)) }} />
+                            </div>
+                        </>
+                    </ClickAwayListener>
+                </div >
             )}
         </>
     );

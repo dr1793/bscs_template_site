@@ -5,7 +5,7 @@ import { getRevalidateQuery } from "@/lib/apolloClient";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { gql } from "@apollo/client";
 import './styles.css';
-import SectionContainer from "@/components/HomePageSections/Section";
+import SectionContainer from "@/components/AboutPageSections/Section";
 import PageBannerSection from "@/components/utilities/PageBannerSection/PageBannerSection";
 
 export default async function AboutPage() {
