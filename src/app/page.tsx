@@ -190,11 +190,10 @@ export default async function Home() {
           </div>
           {
             middleSectionData.map((sectionCard: PageCardTypeB, i: number) => {
-
               return (
                 <div
                   key={i}
-                  className={`flex flex-1 my-3 sm:my-0 flex-col items-center h-full pb-8 mb-8`}
+                  // className={`flex flex-1 my-3 sm:my-0 flex-col items-center h-full pb-8 mb-8`}
                 >
                   <SectionContainer
                     largeText={sectionCard.largeText}
@@ -219,7 +218,7 @@ export default async function Home() {
         </div>
         <div
           className={`bg-bscs-yellow-bright font-oswald text-black flex flex-row items-center px-6 pb-4 pt-0 w-full lg:px-60`}
-          style={{ height: "40vh" }}
+          style={{ height: "50vh" }}
         >
           <SectionContainer
             largeText={signUpCardData.largeText}

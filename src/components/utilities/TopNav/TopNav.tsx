@@ -52,7 +52,7 @@ export default function TopNav({
     return (
       <Link
         key={link.href}
-        className={`topnav-link sm:text-xl lg:text-3xl flex items-end px-1 lg:px-2 mx-1 pb-1
+        className={`topnav-link sm:text-xl lg:text-2xl flex items-end px-1 lg:px-2 mx-1 pb-1
                         relative before:content-[''] before:absolute before:block before:w-full before:h-[3px] 
                         before:bottom-0 before:left-0 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
                         before:transition before:ease-in-out before:duration-300

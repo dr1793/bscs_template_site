@@ -58,7 +58,7 @@ export default function CalendarSection({
         onClick={() => setMonthOffSet(monthOffSet - 1)}
       >
         <span className="sr-only">Previous month</span>
-        <ChevronLeftIcon className="h-7 w-7" aria-hidden="true" />
+        <ChevronLeftIcon className="h-9 w-9" aria-hidden="true" />
       </button>
       <button
         type="button"
@@ -67,14 +67,14 @@ export default function CalendarSection({
         onClick={() => setMonthOffSet(monthOffSet + 1)}
       >
         <span className="sr-only">Next month</span>
-        <ChevronRightIcon className="h-7 w-7" aria-hidden="true" />
+        <ChevronRightIcon className="h-9 w-9" aria-hidden="true" />
       </button>
       <section
         className={classNames(
           "text-center"
         )}
       >
-        <h2 className="text-lg font-semibold text-gray-900">
+        <h2 className="text-lg md:text-2xl lg:text-3xl font-semibold text-gray-900">
           {currentMonth?.name}
         </h2>
         <div className="mt-6 grid grid-cols-7 text-sm lg:text-lg leading-6 text-gray-500">

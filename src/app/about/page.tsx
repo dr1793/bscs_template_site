@@ -44,13 +44,13 @@ export default async function AboutPage() {
           buttonText={card2.buttonText}
         />
       </div>
-      <div className={`w-full text-white font-oswald `}>
+      <div className={`w-full text-white font-oswald`}>
         <div className="h-screen bg-center bg-cover bg-no-repeat custom-list r"
           style={{
             backgroundImage: `url(${rules.centerImage.url})`,
           }}>
-          <div className="bg-black bg-opacity-40 h-full w-full flex flex-col justify-center items-cente">
-            <div className={`flex flex-col items-center justify-center text-center`}>
+          <div className="bg-black bg-opacity-40 h-full w-full  flex flex-col justify-center items-center">
+            <div className={`flex flex-col items-center justify-center text-center xl:w-[70vw]`}>
               <p
                 className="text-white font-grotesk"
                 style={{ fontSize: headerFontSize }}
@@ -58,7 +58,7 @@ export default async function AboutPage() {
                 {rules.largeText}
               </p>
             </div>
-            <div className="md:text-3xl px-10 ">
+            <div className="md:text-3xl px-10 xl:w-[70vw]">
               {documentToReactComponents(rules.richText?.json)}
             </div>
           </div>

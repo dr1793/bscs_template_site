@@ -43,7 +43,7 @@ export default function SectionContainer({
         <>
             {textAlign === 'center'
                 ?
-                <>
+                <div className="flex flex-col items-center">
                     <div className={" font-bold py-2 my-3 text-2xl"}>
                         {largeText}
                     </div>
@@ -58,35 +58,41 @@ export default function SectionContainer({
                             text={buttonText}
                         />
                     }
-                </>
+                </div>
                 :
-                <div className={`h-[50vh] md:h-[45vh] max-w-7xl flex flex-grow justify-center align-center lg:justify-around ${itemOrderMap[textAlign]}`}>
-                    <div className="flex w-full flex-col justify-center items-center max-w-xs hidden sm:flex">
+                <div className={`flex flex-grow justify-center align-center lg:justify-between xl:justify-around ${itemOrderMap[textAlign]} lg:w-[70vw]`}>
+                    <div className="hidden sm:flex w-full flex-col justify-center items-center max-w-xs xl:max-w-md">
                         {imageURL &&
                             <div
-                                className="flex-2  flex justify-center items-center"
+                                className="flex-2 justify-center items-center"
                                 style={{
                                     width: "90%",
-                                    height: "80%",
+                                    height: "75%",
                                     position: "relative",
                                     overflow: "hidden",
                                 }}
                             >
-                                    <Image
-                                        className="bg-inherit"
-                                        fill
-                                        quality={100}
-                                        src={imageURL}
-                                        alt={`swap image ${index}`}
-                                        style={{
-                                            objectFit: 'contain',
-                                        }}
-                                        sizes="100vh"
-                                    />
+                                <Image
+                                    className="bg-inherit object-center"
+                                    // fill
+                                    // quality={100}
+                                    src={imageURL}
+                                    width={0}
+                                    height={0}
+                                    sizes="100vw"
+                                    style={{ width: '100%', height: 'auto' }}
+                                    alt={`swap image ${index}`}
+                                    // style={{
+                                    //     objectFit: 'contain',
+                                    // }}
+                                    // sizes="100vh"
+                                    // layout="fill"
+                                    // objectFit="cover"
+                                />
                             </div>
                         }
                     </div>
-                    <div className=" flex flex-col justify-center px-5 max-w-sm">
+                    <div className=" flex flex-col flex-grow justify-center px-5 max-w-md">
                         <div className=" flex-2 flex-grow text-3xl font-bold flex flex-col justify-end">
                             {largeText}
                         </div>

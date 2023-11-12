@@ -45,7 +45,7 @@ export default async function OurTeam() {
         {teamCards.map((teamCard: TeamCard, i: number) => {
           return (
             <div key={i} className="text-black sm:w-1/3 lg:w-1/5 px-5 py-6">
-              <div className="w-full h-1/2 w-full">
+              <div className="w-full h-1/3 w-full">
                 <Image
                   width={0}
                   height={0}

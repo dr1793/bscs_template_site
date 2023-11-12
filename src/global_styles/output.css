@@ -1862,6 +1862,18 @@ html {
   height: 120vh;
 }
 
+.h-9 {
+  height: 2.25rem;
+}
+
+.h-1\/3 {
+  height: 33.333333%;
+}
+
+.h-1\/4 {
+  height: 25%;
+}
+
 .max-h-12 {
   max-height: 3rem;
 }
@@ -1916,6 +1928,22 @@ html {
 
 .w-20 {
   width: 5rem;
+}
+
+.w-\[80vw\] {
+  width: 80vw;
+}
+
+.w-\[60vw\] {
+  width: 60vw;
+}
+
+.w-\[70vw\] {
+  width: 70vw;
+}
+
+.w-9 {
+  width: 2.25rem;
 }
 
 .max-w-7xl {
@@ -2943,6 +2971,14 @@ html {
     height: 50vh;
   }
 
+  .md\:h-\[55vh\] {
+    height: 55vh;
+  }
+
+  .md\:h-\[60vh\] {
+    height: 60vh;
+  }
+
   .md\:grid-cols-6 {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
@@ -3065,12 +3101,24 @@ html {
     width: 20%;
   }
 
+  .lg\:w-\[80vw\] {
+    width: 80vw;
+  }
+
+  .lg\:w-\[70vw\] {
+    width: 70vw;
+  }
+
   .lg\:max-w-lg {
     max-width: 32rem;
   }
 
   .lg\:justify-start {
     justify-content: flex-start;
+  }
+
+  .lg\:justify-between {
+    justify-content: space-between;
   }
 
   .lg\:justify-around {
@@ -3143,5 +3191,19 @@ html {
 
   .lg\:font-bold {
     font-weight: 700;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:w-\[70vw\] {
+    width: 70vw;
+  }
+
+  .xl\:max-w-md {
+    max-width: 28rem;
+  }
+
+  .xl\:justify-around {
+    justify-content: space-around;
   }
 }
