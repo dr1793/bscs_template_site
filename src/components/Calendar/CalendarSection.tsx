@@ -77,7 +77,7 @@ export default function CalendarSection({
         <h2 className="text-lg font-semibold text-gray-900">
           {currentMonth?.name}
         </h2>
-        <div className="mt-6 grid grid-cols-7 text-xs leading-6 text-gray-500">
+        <div className="mt-6 grid grid-cols-7 text-sm lg:text-lg leading-6 text-gray-500">
           <div>S</div>
           <div>M</div>
           <div>T</div>
@@ -86,7 +86,7 @@ export default function CalendarSection({
           <div>F</div>
           <div>S</div>
         </div>
-        <div className="isolate mt-2 grid grid-cols-7 gap-px bg-gray-200 text-sm shadow ring-1 ring-gray-200">
+        <div className="isolate mt-2 grid grid-cols-7 gap-px bg-gray-200 text-sm lg:text-lg shadow ring-1 ring-gray-200">
           {currentMonth?.days.map((day, dayIdx) => {
             let date = parseLocalDate(day.date);
             return (
@@ -104,7 +104,7 @@ export default function CalendarSection({
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   color: eventDates.includes(day.date) ? "white" : "",
-                  backgroundColor: getEventPictureURL(day.date) ? "#ffe974" : "white"
+                  //backgroundColor: getEventPictureURL(day.date) ? "#ffe974" : "white"
                 }}
               >
                 <Link href={getEventPageURL(day.date) || "javascript:void(0)"}>

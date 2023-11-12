@@ -122,7 +122,7 @@ export default async function CalendarComponent() {
         }
       </section>
       <section className="mt-12">
-        <h2 className="text-base font-semibold leading-6 text-gray-500">
+        <h2 className="text-base font-semibold leading-6 text-gray-500 my-5">
           Past Events
         </h2>
         <ol className="mt-2 divide-y divide-gray-200 text-sm leading-6 text-gray-500">
@@ -131,16 +131,16 @@ export default async function CalendarComponent() {
               <Link
                 href={event.slug}
                 key={i}
-                className="py-4 sm:flex hover:bg-gray-100"
+                className=":py-4 sm:flex hover:bg-gray-100"
               >
                 <time
                   dateTime={format(parseISO(event.datetime), "yyyy-MM-dd")}
-                  className="w-50 flex-none mr-20"
+                  className="w-50 flex-none mr-20 hover:bg-gray-100"
                 >
                   {format(parseISO(event.datetime), "eeee, MMMM dd")}
                 </time>
-                <p className="mt-2 flex-auto sm:mt-0">{event.description?.json && documentToReactComponents(event.description?.json)}</p>
-                <ChevronRightIcon className={`hover:animate-pulse`}/>
+                <p className="mt-2 flex-auto sm:mt-0 hover:bg-gray-100">{event.description?.json && documentToReactComponents(event.description?.json)}</p>
+                <ChevronRightIcon className={`hover:animate-pulse hidden sm:block md:h-30 md:w-30 lg:h-20`}/>
               </Link>
             </li>
           ))}

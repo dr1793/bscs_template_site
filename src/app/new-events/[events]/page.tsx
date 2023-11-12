@@ -60,11 +60,13 @@ export default async function EventsPage({
 
   return (
     <React.Fragment>
-      <div className="h-[93vh] bg-bscs-yellow">
-        <PageTopSectionContainer>
-          <BSCSButton href="/new-events" text={backButton} type="primary" size="reg" />
-        </PageTopSectionContainer>
-        <div className="px-12 flex flex-row h-[50vh]">
+      <div className="h-[93vh] lg:h-[120vh] bg-bscs-yellow">
+        <div className="relative px-6 pb-10 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-24">
+          <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg pt-16">
+            <BSCSButton href="/new-events" text={backButton} type="primary" size="reg" />
+          </div>
+        </div>
+        <div className="px-12 flex flex-col sm:flex-row h-[50vh]">
           <div className="flex flex-1">
             <div style={{ width: '100%', height: '100%', position: 'relative' }}>
               <Link href={addHTTPs(event.eventbriteLink)}>
@@ -77,7 +79,7 @@ export default async function EventsPage({
               </Link>
             </div>
           </div>
-          <div className="flex flex-1 flex-col justify-between">
+          <div className="flex flex-1 flex-col justify-between lg:mr-20">
             <p className="font-bold">{JSON.stringify(event.displayField)}</p>
             <p className="italic">{(format(parseISO(event.datetime), "MMMM d, yyyy 'at' h a"))}</p>
             <text>
