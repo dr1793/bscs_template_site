@@ -21,7 +21,6 @@
 *.pem
 secrets.tsx
 constants.tsx
-_fonts/
 
 # debug
 npm-debug.log*

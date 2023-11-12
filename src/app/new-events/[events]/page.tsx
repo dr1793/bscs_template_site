@@ -66,7 +66,7 @@ export default async function EventsPage({
             <BSCSButton href="/new-events" text={backButton} type="primary" size="reg" />
           </div>
         </div>
-        <div className="px-12 flex flex-col sm:flex-row h-[50vh]">
+        <div className="px-12 flex flex-col sm:flex-row h-[50vh] ">
           <div className="flex flex-1">
             <div style={{ width: '100%', height: '100%', position: 'relative' }}>
               <Link href={addHTTPs(event.eventbriteLink)}>
@@ -79,16 +79,16 @@ export default async function EventsPage({
               </Link>
             </div>
           </div>
-          <div className="flex flex-1 flex-col justify-between lg:mr-20">
+          <div className="flex flex-1 flex-col justify-between  mx-4 lg:mr-20">
             <p className="font-bold">{JSON.stringify(event.displayField)}</p>
             <p className="italic">{(format(parseISO(event.datetime), "MMMM d, yyyy 'at' h a"))}</p>
             <text>
               {documentToReactComponents(event.description.json)}
             </text>
-            <a className="link link-primary text-center" href={addHTTPs(event.eventbriteLink)}>
-              {" "}
-              RSVP here!
-            </a>
+            <div className="mt-5 sm:mt-0"></div>
+            <div className="flex justify-center">
+              <BSCSButton href={addHTTPs(event.eventbriteLink)} text="RSVP Here!" type='primary' size='reg' />
+            </div>
             <br />
           </div>
         </div>

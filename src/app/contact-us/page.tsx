@@ -1,9 +1,7 @@
 import React from "react";
-import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
-import PageTopSectionContainer from "@/components/PageTopSectionContainer";
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import ContactFormComponent from "@/components/utilities/ContactFormComponent";
 import { getRevalidateQuery } from "@/lib/apolloClient";
-import MailingListCTABanner from "@/components/MailingListCTABanner";
 import PageWrapper from "@/components/utilities/PageWrapper";
 import { useStore } from "@/state/store";
 import { gql } from "@apollo/client";
@@ -22,11 +20,12 @@ export default async function ContactForm() {
     <PageWrapper
       pageNo={pageList.findIndex((page) => page.href == "contact-us")}
     >
-      <PageBannerSection
-        hero={hero}
-        headerFontSize={headerFontSize}
-        subheaderFontSize={subheaderFontSize}
-      />
+        <PageBannerSection
+          hero={hero}
+          headerFontSize={headerFontSize}
+          subheaderFontSize={subheaderFontSize}
+          textColor="white"
+        />
       <div className="mx-auto grid md:grid-cols-2 font-oswald bg-bscs-hot-purple flex lg:px-20">
         <div className="text-white flex flex-col justify-center sm:justify-start sm:pt-20 lg:pt-40">
           <div

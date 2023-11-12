@@ -45,12 +45,12 @@ export default async function OurTeam() {
         {teamCards.map((teamCard: TeamCard, i: number) => {
           return (
             <div key={i} className="text-black sm:w-1/3 lg:w-1/5 px-5 py-6">
-              <div className="w-full h-1/3 w-full">
+              <div className="w-full h-1/2 sm:h-1/3 w-full overflow-hidden">
                 <Image
-                  width={0}
+                  width={100}
                   height={0}
-                  sizes="100vw"
-                  style={{ width: '100%', height: '100%' }} 
+                  quality={100}
+                  className="w-full h-full object-cover"
                   src={teamCard.bioImage.url}
                   alt={`${teamCard.memberName} pic`}
                 />
