@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { ChevronLeftIcon, ChevronRightIcon, XMarkIcon } from "@heroicons/react/20/solid";
+import GalleryModal from './GalleryModal';
 
 
 export default function Carousel({ id, pictureURLs }: { id: string, pictureURLs: { title: string; src: { url: string }; }[]; }) {
@@ -31,26 +31,14 @@ export default function Carousel({ id, pictureURLs }: { id: string, pictureURLs:
             />
         </div>
       ))}
-      {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
-          <XMarkIcon className="h-6 w-6 absolute top-4 right-4 cursor-pointer z-10" onClick={() => setIsModalOpen(false)} />
-          <ChevronLeftIcon className="h-15 w-15 z-10" onClick={() => { setPictureIndex(Math.abs(pictureIndex - 1) % 12) }} />
-          {/* Modal content goes here */}
-          <div
-            className={``}
-            style={{ maxWidth: '20vw', maxHeight: '60vh' }}
-          >
-            <Image
-              alt={`Gallery Image ${pictureIndex}`}
-              src={pictureURLs[pictureIndex].src.url}
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
-          <ChevronRightIcon className="h-15 w-15 z-10" onClick={() => { setPictureIndex((pictureIndex + 1) % 12) }} />
-        </div>
-      )}
+      <GalleryModal
+        pictureURLs={pictureURLs}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        pictureIndex={pictureIndex}
+        setPictureIndex={setPictureIndex}
+        centerX={false}
+      />
     </div>
 
   )

@@ -19,7 +19,7 @@ export default function BSCSButton({ type, buttonType="button", styles, size, te
 
   const sizeClassButtonMap = {
     lg:"px-5 py-2 text-lg max-h-12",
-    reg:"px-2 py-1 text-sm max-h-14",
+    reg:"px-2 py-1 text-xs sm:text-sm max-h-14",
   }
 
   return (

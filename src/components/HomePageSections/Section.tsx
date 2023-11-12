@@ -44,7 +44,7 @@ export default function SectionContainer({
             {textAlign === 'center'
                 ?
                 <>
-                    <div className={" font-bold py-2 text-2xl"}>
+                    <div className={" font-bold py-2 my-3 text-2xl"}>
                         {largeText}
                     </div>
                     <div>
@@ -60,41 +60,41 @@ export default function SectionContainer({
                     }
                 </>
                 :
-                <div className={`h-[26vh] w-full flex justify-center align-center lg:justify-between ${itemOrderMap[textAlign]}`}>
-                    <div className="flex-1 flex flex-col justify-center max-w-xs">
+                <div className={`h-[50vh] md:h-[45vh] max-w-7xl flex flex-grow justify-center align-center lg:justify-around ${itemOrderMap[textAlign]}`}>
+                    <div className="flex w-full flex-col justify-center items-center max-w-xs hidden sm:flex">
                         {imageURL &&
                             <div
-                                className="flex-2 bg-white flex justify-center items-center"
+                                className="flex-2  flex justify-center items-center"
                                 style={{
-                                    width: "80%",
-                                    height: "75%",
+                                    width: "90%",
+                                    height: "80%",
                                     position: "relative",
-                                    overflow: "hidden"
+                                    overflow: "hidden",
                                 }}
                             >
                                     <Image
-                                        className="bg-bscs-orange"
+                                        className="bg-inherit"
                                         fill
                                         quality={100}
                                         src={imageURL}
                                         alt={`swap image ${index}`}
                                         style={{
                                             // backgroundColor: '#E55937',
-                                            objectFit: 'fill',
+                                            objectFit: 'contain',
                                         }}
                                         sizes="100vh"
                                     />
                             </div>
                         }
                     </div>
-                    <div className="flex-1 flex flex-col justify-center pr-3 max-w-sm">
+                    <div className=" flex flex-col justify-center px-5 max-w-sm">
                         <div className=" flex-2 flex-grow text-3xl font-bold flex flex-col justify-end">
                             {largeText}
                         </div>
                         <div className="flex-1 text-md mt-3 custom-list">
                             {subText || (richText && documentToReactComponents(richText))}
                         </div>
-                        <div className="flex-1 text-xl flex-grow flex justify-center">
+                        <div className="flex-1 text-xl flex-grow flex justify-center py-5">
                             {(buttonText) &&
                                 <BSCSButton
                                     type='secondary'

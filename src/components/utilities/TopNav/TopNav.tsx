@@ -99,7 +99,7 @@ export default function TopNav({
                   }`}
                 onClick={() => setMobileMenuOpen(true)}
               >
-                <Bars3Icon className="h-8 w-8" aria-hidden="true" />
+                <Bars3Icon className="h-8 w-14" aria-hidden="true" />
               </button>
               <Dialog
                 as="div"

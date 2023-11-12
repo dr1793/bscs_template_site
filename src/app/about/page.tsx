@@ -26,7 +26,7 @@ export default async function AboutPage() {
         headerFontSize={headerFontSize}
         subheaderFontSize={subheaderFontSize}
       />
-      <div className={`w-full bg-bscs-hot-purple text-white font-oswald`}>
+      <div className={`w-full bg-bscs-hot-purple text-white font-oswald flex justify-center`}>
         <SectionContainer
           largeText={card1.largeText}
           imageURL={card1.centerImage.url}
@@ -34,7 +34,7 @@ export default async function AboutPage() {
           textAlign={card1.textAlign}
         />
       </div>
-      <div className={`w-full bg-bscs-orange text-white font-oswald`}>
+      <div className={`w-full bg-bscs-orange text-white font-oswald flex justify-center`}>
         <SectionContainer
           largeText={card2.largeText}
           imageURL={card2.centerImage.url}
@@ -44,20 +44,24 @@ export default async function AboutPage() {
           buttonText={card2.buttonText}
         />
       </div>
-      <div className={`w-full text-white font-oswald`}>
-        <div className="h-screen bg-center bg-cover bg-no-repeat custom-list"
+      <div className={`w-full text-white font-oswald `}>
+        <div className="h-screen bg-center bg-cover bg-no-repeat custom-list r"
           style={{
             backgroundImage: `url(${rules.centerImage.url})`,
           }}>
-          <div className={`flex flex-col items-center justify-center text-center`}>
-            <p
-              className="text-white font-grotesk"
-              style={{ fontSize: headerFontSize }}
-            >
-              {rules.largeText}
-            </p>
+          <div className="bg-black bg-opacity-40 h-full w-full flex flex-col justify-center items-cente">
+            <div className={`flex flex-col items-center justify-center text-center`}>
+              <p
+                className="text-white font-grotesk"
+                style={{ fontSize: headerFontSize }}
+              >
+                {rules.largeText}
+              </p>
+            </div>
+            <div className="md:text-3xl px-10 ">
+              {documentToReactComponents(rules.richText?.json)}
+            </div>
           </div>
-          {documentToReactComponents(rules.richText?.json)}
         </div>
       </div>
     </PageWrapper>

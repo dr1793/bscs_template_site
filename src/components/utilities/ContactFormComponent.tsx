@@ -83,7 +83,7 @@ const ContactFormComponent = () => {
             {CONTACT_FORM_VALUES.map((value, i) => {
               return (
                 <div
-                  className={value?.twoCols ? "" : `sm:col-span-2`}
+                  className={`${value?.twoCols ? "" : `sm:col-span-2`} font-oswald`}
                   key={`${i}-${value.label}`}
                 >
                   <Input {...value} />

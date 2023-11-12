@@ -27,12 +27,12 @@ export default async function ContactForm() {
         headerFontSize={headerFontSize}
         subheaderFontSize={subheaderFontSize}
       />
-      <div className="mx-auto grid max-w-7xl grid-cols-2">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 font-oswald ml-5">
 
-        <div className="text-black">
+        <div className="text-white flex flex-col justify-center mb-20">
 
           <div
-            className="absolute h-[] inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-100 ring-1 ring-gray-900/10 lg:w-1/2 "
+            className="absolute h-[] inset-y-0 left-0 -z-10 w-full overflow-hidden bg-bscs-hot-purple ring-1 ring-gray-900/10 lg:w-1/2 "
           >
           </div>
           <h1 className="text-3xl font-bold tracking-tight">

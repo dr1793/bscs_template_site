@@ -18,6 +18,7 @@ import CalendarSection from "./CalendarSection";
 import { createSlug } from "@/lib/utilityFunctions";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { before } from "node:test";
+import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
 type contentfulEventObjectWithSlug = contentfulEventObject & {
   slug: string;
@@ -88,11 +89,11 @@ export default async function CalendarComponent() {
   const { beforeToday, afterToday } = splitEventsByDate(orderedEventsandSlugs);
 
   return (
-    <div className="mx-12">
-      <div className="relative grid grid-cols-1 gap-x-14">
+    <div className="mx-12 font-oswald ">
+      <div className="relative grid grid-cols-1 gap-x-14 ">
         <CalendarSection months={months} events={orderedEventsandSlugs} />
       </div>
-      <section className="mt-12">
+      <section className="mt-12 ">
         <h2 className="text-base font-semibold leading-6 text-gray-900">
           Upcoming Events
         </h2>
@@ -121,7 +122,7 @@ export default async function CalendarComponent() {
         }
       </section>
       <section className="mt-12">
-        <h2 className="text-base font-semibold leading-6 text-gray-900">
+        <h2 className="text-base font-semibold leading-6 text-gray-500">
           Past Events
         </h2>
         <ol className="mt-2 divide-y divide-gray-200 text-sm leading-6 text-gray-500">
@@ -139,6 +140,7 @@ export default async function CalendarComponent() {
                   {format(parseISO(event.datetime), "eeee, MMMM dd")}
                 </time>
                 <p className="mt-2 flex-auto sm:mt-0">{event.description?.json && documentToReactComponents(event.description?.json)}</p>
+                <ChevronRightIcon className={`hover:animate-pulse`}/>
               </Link>
             </li>
           ))}

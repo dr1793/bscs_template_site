@@ -23,14 +23,14 @@ const PageBannerSection: FC<PageBannerSectionProps> = ({
 }) => {
     return (
         <div className="w-full">
-            <div className="h-[70vh] bg-center bg-cover bg-no-repeat" style={{ backgroundImage: `url(${hero.centerImage.url})` }}>
-                <div className="relative p-4 text-white flex flex-col items-center justify-center h-full">
+            <div className="h-[90vh] sm:h-[70vh] bg-center bg-cover bg-no-repeat" style={{ backgroundImage: `url(${hero.centerImage.url})` }}>
+                <div className="relative p-4text-white flex flex-col items-center justify-center h-full">
                     <div className="absolute inset-0 bg-black opacity-50"></div>
                     <div className={`absolute inset-0 flex flex-col items-center justify-center text-center`}>
-                        <p className="text-bscs-yellow font-grotesk" style={{ fontSize: headerFontSize }}>
+                        <p className="text-bscs-yellow  mt-20 sm:mt-0 font-grotesk" style={{ fontSize: headerFontSize }}>
                             {hero.largeText}
                         </p>
-                        <p className={`text-white font-oswald ${subheaderFontSize}`}>
+                        <p className={`text-white font-oswald px-8 ${subheaderFontSize}`}>
                             {hero.richText?.json && documentToReactComponents(hero.richText.json)}
                         </p>
                     </div>

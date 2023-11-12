@@ -30,7 +30,7 @@ export default function Footer({
           type="secondary"
           text={buttonText}
           href="/contact-us"
-          size='lg'
+          size='reg'
         ></BSCSButton>
       </div>
     </div>

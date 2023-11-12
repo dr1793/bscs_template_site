@@ -33,58 +33,56 @@ export default function Input({
       {label &&
         <label
           htmlFor={tagLabel}
-          className={`block text-sm font-semibold leading-6 text-gray-900 ${labelClasses}`}
+          className={`block text-sm font-semibold leading-6 text-white ${labelClasses}`}
         >
           {label}
         </label>
       }
-      <div className="">
-        {textArea ? (
-          <textarea
-            {...register(tagLabel, {
-              required: required && "Required",
-              pattern: validationPattern,
-            })}
-            name={tagLabel}
-            id={tagLabel}
-            rows={4}
-            className={inputStyles}
-            defaultValue={""}
-          />
-        ) : formatter ? (
-          <Controller
-            defaultValue={""}
-            render={({ field: { onChange, name, onBlur, value } }) => (
-              <PatternFormat
-                onChange={onChange}
-                format={formatter}
-                name={name}
-                value={value}
-                className={inputStyles}
-              />
-            )}
-            rules={{
-              required: required,
-              pattern: validationPattern,
-            }}
-            name={tagLabel}
-            control={control}
-          />
-        ) : (
-          <input
-            {...register(tagLabel, {
-              required: required && "Required",
-              pattern: validationPattern,
-            })}
-            type={type}
-            name={tagLabel}
-            id={tagLabel}
-            placeholder={placeholder}
-            autoComplete={autoComplete}
-            className={inputStyles}
-          />
-        )}
-      </div>
+      {textArea ? (
+        <textarea
+          {...register(tagLabel, {
+            required: required && "Required",
+            pattern: validationPattern,
+          })}
+          name={tagLabel}
+          id={tagLabel}
+          rows={4}
+          className={inputStyles}
+          defaultValue={""}
+        />
+      ) : formatter ? (
+        <Controller
+          defaultValue={""}
+          render={({ field: { onChange, name, onBlur, value } }) => (
+            <PatternFormat
+              onChange={onChange}
+              format={formatter}
+              name={name}
+              value={value}
+              className={inputStyles}
+            />
+          )}
+          rules={{
+            required: required,
+            pattern: validationPattern,
+          }}
+          name={tagLabel}
+          control={control}
+        />
+      ) : (
+        <input
+          {...register(tagLabel, {
+            required: required && "Required",
+            pattern: validationPattern,
+          })}
+          type={type}
+          name={tagLabel}
+          id={tagLabel}
+          placeholder={placeholder}
+          autoComplete={autoComplete}
+          className={inputStyles}
+        />
+      )}
       {errors[tagLabel] && (
         <div className="text-red-700">
           {String(errors[tagLabel]?.message)}

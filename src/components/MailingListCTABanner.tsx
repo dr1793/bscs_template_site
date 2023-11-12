@@ -64,9 +64,9 @@ export default function MailingListCTABanner({
         className=""
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="flex flex-row justify-between items-center">
+        <div className="flex flex-col items-center justify-between md:flex-row md:justify-between md:items-start">
           <FormProvider {...methods}>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center flex-grow mr-1">
               <Input {...MAILING_LIST_EMAIL} label="" placeholder={placeholder}/>
             </div>
           </FormProvider>

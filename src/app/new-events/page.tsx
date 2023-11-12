@@ -25,7 +25,7 @@ export default async function EventMusts() {
         headerFontSize={headerFontSize}
         subheaderFontSize={subheaderFontSize}
       />
-      <div className="w-full p-10 pt-20">
+      <div className="w-full p-10 pt-20 ">
         {/* @ts-expect-error Server Component */}
         <CalendarComponent />
       </div>

@@ -50,6 +50,7 @@ export default function CalendarSection({
 
   return (
     <React.Fragment>
+      <div className="font-oswald">
       <button
         type="button"
         className="absolute -left-1.5 -top-1 flex items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
@@ -57,7 +58,7 @@ export default function CalendarSection({
         onClick={() => setMonthOffSet(monthOffSet - 1)}
       >
         <span className="sr-only">Previous month</span>
-        <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
+        <ChevronLeftIcon className="h-7 w-7" aria-hidden="true" />
       </button>
       <button
         type="button"
@@ -66,14 +67,14 @@ export default function CalendarSection({
         onClick={() => setMonthOffSet(monthOffSet + 1)}
       >
         <span className="sr-only">Next month</span>
-        <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
+        <ChevronRightIcon className="h-7 w-7" aria-hidden="true" />
       </button>
       <section
         className={classNames(
           "text-center"
         )}
       >
-        <h2 className="text-sm font-semibold text-gray-900">
+        <h2 className="text-lg font-semibold text-gray-900">
           {currentMonth?.name}
         </h2>
         <div className="mt-6 grid grid-cols-7 text-xs leading-6 text-gray-500">
@@ -85,7 +86,7 @@ export default function CalendarSection({
           <div>F</div>
           <div>S</div>
         </div>
-        <div className="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
+        <div className="isolate mt-2 grid grid-cols-7 gap-px bg-gray-200 text-sm shadow ring-1 ring-gray-200">
           {currentMonth?.days.map((day, dayIdx) => {
             let date = parseLocalDate(day.date);
             return (
@@ -96,10 +97,6 @@ export default function CalendarSection({
                   !isSameMonth(date, dayInCurrentMonth) && "text-gray-400",
                   dayIdx === 0 && dateColStart[getDay(date)],
                   "bg-gray-50",
-                  dayIdx === 0 && "rounded-tl-lg",
-                  dayIdx === 6 && "rounded-tr-lg",
-                  dayIdx === currentMonth?.days.length - 7 && "rounded-bl-lg",
-                  dayIdx === currentMonth?.days.length - 1 && "rounded-br-lg",
                   "relative py-1.5 hover:bg-gray-100 focus:z-10"
                 )}
                 style={{
@@ -126,6 +123,7 @@ export default function CalendarSection({
           })}
         </div>
       </section>
+      </div>
     </React.Fragment>
   );
 }
