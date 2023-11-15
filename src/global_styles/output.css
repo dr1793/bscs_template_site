@@ -864,11 +864,6 @@ html {
     color: hsl(var(--bc) / var(--tw-text-opacity));
   }
 
-  .link-primary:hover {
-    --tw-text-opacity: 1;
-    color: hsl(var(--pf) / var(--tw-text-opacity));
-  }
-
   :where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):where(.active), :where(.menu li:not(.menu-title):not(.disabled) > details > summary:not(.menu-title)):where(.active) {
     --tw-bg-opacity: 1;
     background-color: hsl(var(--n) / var(--tw-bg-opacity));
@@ -1221,11 +1216,6 @@ html {
   .input[disabled]::placeholder {
   color: hsl(var(--bc) / var(--tw-placeholder-opacity));
   --tw-placeholder-opacity: 0.2;
-}
-
-.link-primary {
-  --tw-text-opacity: 1;
-  color: hsl(var(--p) / var(--tw-text-opacity));
 }
 
 .link:focus {
@@ -1619,6 +1609,11 @@ html {
   margin-right: 3rem;
 }
 
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1632,16 +1627,6 @@ html {
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
-}
-
-.mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
-.mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
 }
 
 .-ml-2 {
@@ -1740,8 +1725,8 @@ html {
   display: none;
 }
 
-.h-1\/3 {
-  height: 33.333333%;
+.h-1\/2 {
+  height: 50%;
 }
 
 .h-10 {
@@ -1826,10 +1811,6 @@ html {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-1\/2 {
-  height: 50%;
 }
 
 .max-h-12 {
@@ -2430,6 +2411,11 @@ html {
   color: rgb(222 204 109 / var(--tw-text-opacity));
 }
 
+.text-bscs-yellow-bright {
+  --tw-text-opacity: 1;
+  color: rgb(255 233 116 / var(--tw-text-opacity));
+}
+
 .text-gray-400 {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
@@ -2453,11 +2439,6 @@ html {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-bscs-yellow-bright {
-  --tw-text-opacity: 1;
-  color: rgb(255 233 116 / var(--tw-text-opacity));
 }
 
 .opacity-25 {
@@ -2769,12 +2750,12 @@ html {
     display: none;
   }
 
-  .sm\:h-\[70vh\] {
-    height: 70vh;
-  }
-
   .sm\:h-1\/3 {
     height: 33.333333%;
+  }
+
+  .sm\:h-\[70vh\] {
+    height: 70vh;
   }
 
   .sm\:w-1\/3 {
