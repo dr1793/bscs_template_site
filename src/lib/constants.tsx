@@ -44,8 +44,8 @@ export const CONTACT_FORM_VALUES: ContactFormValue[] = [
     required: false,
     formatter: "(###) ###-####",
     validationPattern: {
-      // value: /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
-      value: /^\d{10}$/,
+      value: /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
+      //value: /^\d{10}$/,
       message: "Phone number should be 10 digits",
     },
   },

@@ -14,7 +14,6 @@ import {
   CONTACT_FORM_VALUES,
   MESSAGE_API_URL,
 } from "@/lib/constants";
-import LoadingSpinner from "./LoadingSpinner";
 import BSCSButton from "./button";
 
 const ContactFormComponent = () => {
