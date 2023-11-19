@@ -226,10 +226,17 @@ export default async function Home() {
             subText={signUpCardData.subText}
             textAlign={signUpCardData.textAlign}
           >
-            <MailingListCTABanner
+            {/* <MailingListCTABanner
               className=""
               buttonText={signUpCardData.buttonText}
               placeholder={signUpCardData.placeholder}
+            /> */}
+            <BSCSButton 
+              type='primary'
+              styles=""
+              text="Send Us Your Email"
+              size='lg'
+              href={'/contact-us'}
             />
           </SectionContainer>
         </div>
