@@ -57,12 +57,14 @@ export default function PageWrapper({
     motionMapping[getAnimationDirection(previousPageNo)];
 
   return (
-      <motion.div
-        initial={activeMotion.initial}
-        animate={activeMotion.animate}
-        transition={activeMotion.transition}
-      >
+      // <motion.div
+      //   initial={activeMotion.initial}
+      //   animate={activeMotion.animate}
+      //   transition={activeMotion.transition}
+      // >
+      <div>
         {children}
-      </motion.div>
+      </div>
+      // </motion.div>
   );
 }
