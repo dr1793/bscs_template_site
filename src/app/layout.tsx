@@ -12,6 +12,7 @@ import LogoIcon from "@/components/utilities/LogoIcon/LogoIcon";
 import { useStore } from "@/state/store";
 import fontVariables from "./fonts";
 import { AnimatePresence } from "framer-motion";
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
   title: HOME_PAGE_META_NAME,
@@ -85,6 +86,7 @@ export default async function RootLayout({
           />
         </div> */}
         <Footer classNames={``} text={footerText} buttonText={footerButtonText} icons={iconLinks} />
+        <Analytics />
       </body>
     </html>
   );
