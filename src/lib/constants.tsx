@@ -3,7 +3,7 @@ export const BASE_CONTENTFUL_URL: string =
 
 export var MESSAGE_API_URL: string = "https://api.radeleau.dev/";
 export var MAILING_API_URL: string = "https://api.radeleau.dev/mailing";
-export var BSCS_EMAIL: string = "social@bedstuyclothesswap.com";
+export var BSCS_EMAIL: string = "social@bedstuyclothesswap.com,akieracharles@gmail.com";
 if (process.env.NODE_ENV === "development") {
   MESSAGE_API_URL = "http://127.0.0.1:5000/";
   MAILING_API_URL = "http://127.0.0.1:5000/mailing";

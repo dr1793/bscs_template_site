@@ -54,12 +54,14 @@ const ContactFormComponent = () => {
 
     try {
       const response = await axios.post(MESSAGE_API_URL, data);
-      if (response.status === 201) {
+      if (response.status === 201 || response.status === 200) {
         setSuccessSubmit(true);
         reset();
         setLoading(false);
         return;
       }
+      setServerError(true);
+      setLoading(false);
     } catch (err) {
       console.log(err);
       setServerError(true);
@@ -100,7 +102,7 @@ const ContactFormComponent = () => {
             />
             <div
               className={`${!serverError && "hidden"
-                } text-red-700 px-4 mb-2 relative`}
+                } text-white-700 px-4 mb-2 relative text-center`}
             >
               We&apos;re having trouble communicating with our servers. Try again
               later!
