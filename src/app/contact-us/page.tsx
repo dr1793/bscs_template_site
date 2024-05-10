@@ -61,7 +61,7 @@ export default async function ContactForm() {
               <dd>
                 <a
                   className="hover:"
-                  href="mailto:hello@example.com"
+                  href="mailto:social@bedstuyclothesswap.com"
                 >
                   {hero.subText}
                 </a>
