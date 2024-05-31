@@ -10,6 +10,8 @@ import SectionContainer from "@/components/HomePageSections/Section";
 import { Document } from '../../node_modules/@contentful/rich-text-types/dist/types/types';
 import MailingListCTABanner from "@/components/MailingListCTABanner";
 import ScrollableDiv from "@/components/utilities/ScrollableDiv";
+import webReelSrc from '../../public/web_reel.mp4';
+
 
 
 type CenterImage = {
@@ -47,18 +49,15 @@ export default async function Home() {
   const { data } = await getRevalidateQuery(query);
   const hero = data?.homeCollection?.items[0];
 
-  const headerFontSize = `calc(${(7 - 1) * 1.2}vw + 1rem)`;
-  const subheaderFontSize = `calc(${(4 - 1) * 1.2}vw + 1rem)`;
+  const headerFontSize = `calc(${(7 - 1) * 1.4}vw + 1rem)`;
+  const subheaderFontSize = `calc(${(4 - 1) * 1.4}vw + 1rem)`;
 
   const firstSectionData = data?.pageCardCollection?.items;
   const middleSectionTop = data?.pageCardTypeBCollection?.items[0];
   const middleSectionData = data?.pageCardTypeBCollection?.items.slice(1)
   const signUpCardData = data?.pageCardSignUp;
   const galleryImages = data?.galleryImageCollection.items;
-
-
-
-
+  const heroWebP = data?.homeBannerImage?.webp.url;
 
 
   return (
@@ -67,12 +66,14 @@ export default async function Home() {
         <div
           className="h-screen bg-center bg-cover bg-no-repeat"
           style={{
-            backgroundImage: `url(${hero.picture.url})`,
+            // backgroundImage: `url(${hero.picture.url})`,
+            backgroundImage: `url(${heroWebP})`,
           }}
         >
           <ScrollableDiv className="h-[100vh] text-white flex justify-center text-center">
+            {/* <video className="absolute top-0 z-[1] w-full h-full object-cover" src={webReelSrc} autoPlay muted loop /> */}
             <div className="absolute inset-0 bg-black opacity-25" />
-            <div className="relative p-4  flex flex-col items-center justify-center h-full">
+            <div className="relative p-4 z-[2] flex flex-col items-center justify-center h-full">
               <p
                 className="font-grotesk"
                 style={{ fontSize: headerFontSize }}
@@ -80,7 +81,7 @@ export default async function Home() {
                 {hero.header}
               </p>
               <p
-                className="text-bscs-yellow font-grotesk"
+                className="text-bscs-yellow z-[2] font-grotesk"
                 style={{ fontSize: subheaderFontSize }}
               >
                 {hero.headerSubText}
@@ -193,7 +194,7 @@ export default async function Home() {
               return (
                 <div
                   key={i}
-                  // className={`flex flex-1 my-3 sm:my-0 flex-col items-center h-full pb-8 mb-8`}
+                // className={`flex flex-1 my-3 sm:my-0 flex-col items-center h-full pb-8 mb-8`}
                 >
                   <SectionContainer
                     largeText={sectionCard.largeText}
@@ -231,7 +232,7 @@ export default async function Home() {
               buttonText={signUpCardData.buttonText}
               placeholder={signUpCardData.placeholder}
             /> */}
-            <BSCSButton 
+            <BSCSButton
               type='primary'
               styles=""
               text="Send Us Your Email"
@@ -268,7 +269,10 @@ const query = gql`
       }
     }
     homeBannerImage (id: "5vXU18h0iaKOEtWMzrDOmL"){
-      image{
+      image {
+        url
+      }
+      webp {
         url
       }
     }

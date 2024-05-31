@@ -30,7 +30,7 @@ const ScrollableDiv: React.FC<ScrollableDivProps> = ({
     return (
         <div onClick={handleClick} className={className} >
             {children}
-            <ChevronDownIcon className={`h-12 w-14 z-10 absolute bottom-0 animate-pulse ${scrolled && 'hidden' }`} />
+            <ChevronDownIcon className={`h-18 w-20 z-10 absolute bottom-0 animate-pulse ${scrolled && 'hidden' }`} />
         </div>
     );
 };
