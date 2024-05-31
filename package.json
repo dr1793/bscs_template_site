@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "7": "^0.0.1",
     "@apollo/client": "^3.8.0-alpha.15",
     "@apollo/experimental-nextjs-app-support": "^0.10.1",
     "@contentful/rich-text-react-renderer": "^15.19.0",
@@ -26,6 +27,7 @@
     "axios": "^1.4.0",
     "date-fns": "^2.30.0",
     "eslint": "8.41.0",
+    "file-loader": "^6.2.0",
     "framer-motion": "^10.12.16",
     "graphql": "^16.6.0",
     "jsdom": "^22.1.0",
