@@ -75,7 +75,7 @@ export default function TopNav({
       />
       <div className="z-40 w-full sticky top-0">
         <div
-          className={`absolute flex flex-col w-full ${!mobileMenuOpen && "backdrop-filter backdrop-blur-sm pb-8"
+          className={`absolute flex flex-col w-full ${!mobileMenuOpen && "backdrop-filter backdrop-blur-md pb-8"
             }`}
         >
           <div className="flex flex-row h-24 justify-between p-2 font-oswald">

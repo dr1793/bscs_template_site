@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 import { getRevalidateQuery } from "@/lib/apolloClient";
 import { gql } from "@apollo/client";
 import Banner from "@/components/Banner";
@@ -63,32 +63,31 @@ export default async function Home() {
   return (
     <React.Fragment>
       <main>
-        <div
-          className="h-screen bg-center bg-cover bg-no-repeat"
-          style={{
-            // backgroundImage: `url(${hero.picture.url})`,
-            backgroundImage: `url(${heroWebP})`,
-          }}
-        >
-          <ScrollableDiv className="h-[100vh] text-white flex justify-center text-center">
-            {/* <video className="absolute top-0 z-[1] w-full h-full object-cover" src={webReelSrc} autoPlay muted loop /> */}
-            <div className="absolute inset-0 bg-black opacity-25" />
-            <div className="relative p-4 z-[2] flex flex-col items-center justify-center h-full">
-              <p
-                className="font-grotesk"
-                style={{ fontSize: headerFontSize }}
-              >
-                {hero.header}
-              </p>
-              <p
-                className="text-bscs-yellow z-[2] font-grotesk"
-                style={{ fontSize: subheaderFontSize }}
-              >
-                {hero.headerSubText}
-              </p>
-            </div>
-          </ScrollableDiv>
-        </div>
+          <div
+            className="h-screen bg-center bg-cover bg-no-repeat"
+            style={{
+              backgroundImage: `url(${heroWebP})`,
+            }}
+          >
+            <ScrollableDiv className="h-[100vh] text-white flex justify-center text-center">
+              {/* <video className="absolute top-0 z-[1] w-full h-full object-cover" src={webReelSrc} autoPlay muted loop /> */}
+              <div className="absolute inset-0 bg-black opacity-25" />
+              <div className="relative p-4 z-[2] flex flex-col items-center justify-center h-full">
+                <p
+                  className="font-grotesk"
+                  style={{ fontSize: headerFontSize }}
+                >
+                  {hero.header}
+                </p>
+                <p
+                  className="text-bscs-yellow z-[2] font-grotesk"
+                  style={{ fontSize: subheaderFontSize }}
+                >
+                  {hero.headerSubText}
+                </p>
+              </div>
+            </ScrollableDiv>
+          </div>
         {/* {'First Section'} */}
         <div
           className={`bg-bscs-yellow-bright text-black flex flex-row px-6 py-10 w-full h-[60vh] lg:h-[60vh]`}
